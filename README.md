@@ -10,7 +10,7 @@ Umbara Project
 
 You will need:
 
-- `python3.9` (see `pyproject.toml` for full version)
+- `python3.11.1` (see `pyproject.toml` for full version)
 - `postgresql` with version `13`
 - `docker` with [version at least](https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix) `18.02`
 
