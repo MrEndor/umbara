@@ -7,7 +7,7 @@ authors = ["umbaraapp.com"]
 
 
 [tool.poetry.dependencies]
-python = "3.10.4"
+python = "3.11.1"
 
 django = { version = "^3.2", extras = ["argon2"] }
 django-split-settings = "^1.2"
