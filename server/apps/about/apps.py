@@ -5,4 +5,4 @@ class AboutConfig(AppConfig):
     """About module config."""
 
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'about'
+    name = 'server.apps.about'

@@ -5,4 +5,4 @@ class CatalogConfig(AppConfig):
     """Catalog module config."""
 
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'catalog'
+    name = 'server.apps.catalog'
