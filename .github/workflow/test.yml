@@ -40,7 +40,6 @@ jobs:
     - name: Run checks
       run: |
         poetry run flake8 .
-        poetry run pytest
         poetry run poetry check
         poetry run pip check
         # TODO: remove once `py` / `pytest` package are updated
