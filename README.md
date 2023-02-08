@@ -10,10 +10,7 @@ Umbara Project
 
 You will need:
 
-- `python3.11.1` (see `pyproject.toml` for full version)
-- `postgresql` with version `13`
-- `docker` with [version at least](https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix) `18.02`
-
+- `python^3.11` (see `pyproject.toml` for full version)
 
 ## Development
 
@@ -24,6 +21,10 @@ When developing locally, we use:
 - `pycharm 2017+` or `vscode`
 
 
-## Documentation
+## Quick start
 
-Full documentation is available here: [`docs/`](docs).
+```
+pip install poetry
+
+poetry install
+```
