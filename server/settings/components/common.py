@@ -23,7 +23,6 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 INSTALLED_APPS: Tuple[str, ...] = (
     # Your apps go here:
-    'server.apps.main',
     'server.apps.homepage',
     'server.apps.catalog',
     'server.apps.about',
