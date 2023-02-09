@@ -39,6 +39,7 @@ jobs:
         poetry run pip install -U pip
     - name: Run checks
       run: |
+        dump-env -t config/.env.template -p 'SECRET_' --strict SECRET_DJANGO_SECRET_KEY > config/.env
         poetry run flake8 .
         poetry run mypy manage.py server
         poetry run poetry check
