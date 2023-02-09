@@ -23,8 +23,57 @@ When developing locally, we use:
 
 ## Quick start
 
-```
-pip install poetry
+Сheck your python version (should be 3.11)
 
+1) Install poetry
+```shell
+pip install poetry
+```
+2) Choose poetry python version 3.11
+```shell
+poetry env use /full/path/to/python
+```
+3) Download all dependencies to mod dev
+```shell
 poetry install
+```
+If you only need dependencies for production, then
+```shell
+poetry install --only main
+```
+
+4) Before starting the project, you need to create an `.env` file in the directory `config` and fill 
+it with the `.env.template` file in the same directory
+
+5) Updating tables in a database
+```shell
+poetry run python manage.py migrate
+```
+
+6) Start django server
+```shell
+poetry run python manage.py runserver
+```
+
+### Optional
+Create user for django admin\
+`Attention`: This should be done after migrations
+```shell
+poetry run python manage.py createsuperuser
+```
+
+Running tests and coverage
+```shell
+poetry run pytest
+```
+
+Running Type Checker
+```shell
+poetry run mypy manage.py server
+poetry run mypy tests
+```
+
+Running linter flake8
+```shell
+poetry run flake8 .
 ```
