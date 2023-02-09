@@ -9,7 +9,7 @@ import socket
 
 from django.http import HttpRequest
 
-from server.settings.components import config
+from server.settings import components
 from server.settings.components.common import (
     DATABASES,
     INSTALLED_APPS,
@@ -21,7 +21,7 @@ from server.settings.components.common import (
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    config('DOMAIN_NAME'),
+    components.config('DOMAIN_NAME'),
     'localhost',
     '0.0.0.0',  # noqa: S104
     '127.0.0.1',

@@ -12,12 +12,12 @@ from typing import Dict, List, Tuple, Union
 
 from django.utils.translation import gettext_lazy as _
 
-from server.settings.components import BASE_DIR, config
+from server.settings import components
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = config('DJANGO_SECRET_KEY')
+SECRET_KEY = components.config('DJANGO_SECRET_KEY')
 
 # Application definition:
 
@@ -87,12 +87,12 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': config('SQLITE_DB'),
-        'USER': config('SQLITE_USER'),
-        'PASSWORD': config('SQLITE_PASSWORD'),
-        'HOST': config('DJANGO_DATABASE_HOST'),
-        'PORT': config('DJANGO_DATABASE_PORT', cast=int),
-        'CONN_MAX_AGE': config('CONN_MAX_AGE', cast=int, default=60),
+        'NAME': components.config('SQLITE_DB'),
+        'USER': components.config('SQLITE_USER'),
+        'PASSWORD': components.config('SQLITE_PASSWORD'),
+        'HOST': components.config('DJANGO_DATABASE_HOST'),
+        'PORT': components.config('DJANGO_DATABASE_PORT', cast=int),
+        'CONN_MAX_AGE': components.config('CONN_MAX_AGE', cast=int, default=60),
     },
 }
 
@@ -137,7 +137,7 @@ TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
     'DIRS': [
         # Contains plain text templates, like `robots.txt`:
-        BASE_DIR.joinpath('server', 'templates'),
+        components.BASE_DIR.joinpath('server', 'templates'),
     ],
     'OPTIONS': {
         'context_processors': [
@@ -159,7 +159,7 @@ TEMPLATES = [{
 # https://docs.djangoproject.com/en/3.2/topics/files/
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.joinpath('media')
+MEDIA_ROOT = components.BASE_DIR.joinpath('media')
 
 
 # Django authentication system
