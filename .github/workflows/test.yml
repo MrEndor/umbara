@@ -29,7 +29,7 @@ jobs:
     - name: Install poetry
       env:  # Keep in sync with `POETRY_VERSION` in `Dockerfile`
         POETRY_VERSION: "1.3.2"
-        SECRET_DJANGO_SECRET_KEY: &{{ secrets.SECRET_DJANGO_SECRET_KEY }}
+        SECRET_DJANGO_SECRET_KEY: ${{ secrets.SECRET_DJANGO_SECRET_KEY }}
       run: |
         curl -sSL "https://install.python-poetry.org" | python -
         # Adding `poetry` to `$PATH`:
