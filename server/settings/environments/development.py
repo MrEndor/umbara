@@ -7,6 +7,8 @@ SECURITY WARNING: don't run with debug turned on in production!
 import logging
 import socket
 
+from django.http import HttpRequest
+
 from server.settings.components import config
 from server.settings.components.common import (
     DATABASES,
@@ -73,7 +75,7 @@ except socket.error:  # pragma: no cover
 INTERNAL_IPS += ['127.0.0.1', '10.0.2.2']
 
 
-def _custom_show_toolbar(request) -> bool:
+def _custom_show_toolbar(request: HttpRequest) -> bool:
     """Only show the debug toolbar to users with the superuser flag."""
     return DEBUG and request.user.is_superuser
 
