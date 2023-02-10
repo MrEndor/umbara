@@ -49,7 +49,7 @@ mypy = "^0.991"
 django-stubs = "^1.13"
 
 yamllint = "^1.27"
-safety = "^2.1"
+safety = "^2.3"
 dotenv-linter = "^0.4"
 polint = "^0.4"
 dennis = "^1.1"
