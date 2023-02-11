@@ -12,6 +12,7 @@ pytest_plugins = [
     'fixtures.apps.about',
     'fixtures.apps.catalog',
     'fixtures.apps.homepage',
+    'fixtures.apps.endpoints',
 ]
 
 
