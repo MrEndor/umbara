@@ -8,6 +8,12 @@ It may be also used for extending doctest's context:
 
 import pytest
 
+pytest_plugins = [
+    'fixtures.apps.about',
+    'fixtures.apps.catalog',
+    'fixtures.apps.homepage',
+]
+
 
 @pytest.fixture(autouse=True)
 def _media_root(settings, tmpdir_factory) -> None:
