@@ -9,3 +9,11 @@ BASE_DIR = Path(__file__).parent.parent.parent.parent
 # Loading `.env` files
 # See docs: https://gitlab.com/mkleehammer/autoconfig
 config = AutoConfig(search_path=BASE_DIR.joinpath('config'))
+
+
+def extract_hosts(raw_hosts: str) -> list[str]:
+    """Splits env HOSTS into a list."""
+    if raw_hosts == '':
+        return []
+
+    return raw_hosts.split(',')

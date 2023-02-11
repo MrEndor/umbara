@@ -20,14 +20,13 @@ from server.settings.components.common import (
 
 DEBUG = True
 
+
+_HOSTS = components.extract_hosts(
+    components.config('HOSTS'),
+)
 ALLOWED_HOSTS = [
     components.config('DOMAIN_NAME'),
-    'localhost',
-    '0.0.0.0',  # noqa: S104
-    '127.0.0.1',
-    '[::1]',
-]
-
+] + _HOSTS
 
 # Installed apps for development only:
 
