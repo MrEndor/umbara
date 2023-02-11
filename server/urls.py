@@ -16,10 +16,17 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from health_check import urls as health_urls
 
+from server.apps.about import urls as about_urls
+from server.apps.catalog import urls as catalog_urls
+from server.apps.homepage import urls as homepage_urls
+
 admin.autodiscover()
 
 urlpatterns = [
     # Apps:
+    path('/', include(homepage_urls, namespace='homepage')),
+    path('about/', include(about_urls, namespace='about')),
+    path('catalog/', include(catalog_urls, namespace='catalog')),
 
     # Health checks:
     path('health/', include(health_urls)),
