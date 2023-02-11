@@ -18,7 +18,7 @@ from server.settings.components.common import (
 
 # Setting the development status:
 
-DEBUG = components.config('DEBUG', True, cast=bool)
+DEBUG = components.config('DEBUG', default=True, cast=bool)
 
 
 _HOSTS = components.extract_hosts(
