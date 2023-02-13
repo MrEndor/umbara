@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from server.apps.catalog.views import item_detail, item_list
 
@@ -7,4 +7,5 @@ app_name = 'catalog'
 urlpatterns = [
     path('', item_list, name='item_list'),
     path('/<int:catalog_id>', item_detail, name='item_detail'),
+    re_path('^re/(?P<catalog_id>[0-9]+)/$', item_detail, name='re_item_detail'),
 ]
