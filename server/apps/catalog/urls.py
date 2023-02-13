@@ -8,4 +8,9 @@ urlpatterns = [
     path('', item_list, name='item_list'),
     path('/<int:catalog_id>', item_detail, name='item_detail'),
     re_path('^re/(?P<catalog_id>[0-9]+)/$', item_detail, name='re_item_detail'),
+    path(
+        'converter/<own_int:catalog_id>',
+        item_detail,
+        name='convert_item_detail',
+    ),
 ]
