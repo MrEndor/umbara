@@ -1,4 +1,3 @@
-from django.urls.converters import register_converter
 
 
 class OwnIntegerConverter:
