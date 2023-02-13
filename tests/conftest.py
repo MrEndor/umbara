@@ -6,6 +6,7 @@ It may be also used for extending doctest's context:
 2. https://docs.pytest.org/en/latest/doctest.html
 """
 
+import hypothesis
 import pytest
 
 pytest_plugins = [
@@ -13,6 +14,13 @@ pytest_plugins = [
     'fixtures.apps.catalog',
     'fixtures.apps.homepage',
 ]
+
+hypothesis.settings.register_profile(
+    'test', parent=hypothesis.settings(
+        suppress_health_check=[hypothesis.HealthCheck.function_scoped_fixture],
+        max_examples=500,
+    ),
+)
 
 
 @pytest.fixture(autouse=True)
