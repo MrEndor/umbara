@@ -240,5 +240,8 @@ artifacts/
 # pytest:
 .pytest_cache/
 
+# hypothesis
+.hypothesis/
+
 # ipython:
 .ipython/
