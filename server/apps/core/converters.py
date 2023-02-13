@@ -13,6 +13,3 @@ class OwnIntegerConverter:
     def to_url(self, raw_number: str) -> str:
         """Does nothing."""
         return str(raw_number)
-
-
-register_converter(OwnIntegerConverter, 'own_int')
