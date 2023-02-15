@@ -18,16 +18,15 @@ from server.settings.components.common import (
 
 # Setting the development status:
 
-DEBUG = True
+DEBUG = components.config('DEBUG', default=True, cast=bool)
 
+
+_HOSTS = components.extract_hosts(
+    components.config('HOSTS'),
+)
 ALLOWED_HOSTS = [
     components.config('DOMAIN_NAME'),
-    'localhost',
-    '0.0.0.0',  # noqa: S104
-    '127.0.0.1',
-    '[::1]',
-]
-
+] + _HOSTS
 
 # Installed apps for development only:
 
