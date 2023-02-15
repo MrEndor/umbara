@@ -13,5 +13,4 @@ config = AutoConfig(search_path=BASE_DIR.joinpath('config'))
 
 def extract_hosts(raw_hosts: str) -> list[str]:  # pragma: no cover
     """Splits env HOSTS into a list."""
-
     return raw_hosts.split(',')
