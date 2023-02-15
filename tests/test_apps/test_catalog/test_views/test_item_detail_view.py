@@ -5,10 +5,10 @@ from django.urls import reverse
 from hypothesis import given, strategies
 
 NegativeNumbers = strategies.integers(max_value=-1)
-PositiveNumbers = strategies.integers(min_value=0)
+PositiveNumbersAndNol = strategies.integers(min_value=0)
 
 
-@given(catalog_id=PositiveNumbers)
+@given(catalog_id=PositiveNumbersAndNol)
 def test_ok_item_detail_page(
     client: Client,
     catalog_item_detail_body: str,
