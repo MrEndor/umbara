@@ -9,11 +9,14 @@ It may be also used for extending doctest's context:
 import hypothesis
 import pytest
 
+from django.test import RequestFactory
+
 pytest_plugins = [
     'fixtures.apps.about',
     'fixtures.apps.catalog',
     'fixtures.apps.homepage',
     'fixtures.apps.endpoints',
+    'fixtures.apps.middleware'
 ]
 
 hypothesis.settings.register_profile(
@@ -52,3 +55,8 @@ def _debug(settings) -> None:
     settings.DEBUG = False
     for template in settings.TEMPLATES:
         template['OPTIONS']['debug'] = True
+
+
+@pytest.fixture(autouse=True)
+def request_factory() -> RequestFactory:
+    return RequestFactory()
