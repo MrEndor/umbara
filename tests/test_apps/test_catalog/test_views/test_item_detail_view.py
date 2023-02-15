@@ -5,20 +5,11 @@ from django.urls import reverse
 from hypothesis import given, strategies
 
 NegativeNumbers = strategies.integers(max_value=-1)
-<<<<<<< HEAD
-PositiveNumbers = strategies.integers(min_value=0)
-integer_regex = '[0-9]+'
-
-
-@given(catalog_id=PositiveNumbers)
-def test_item_detail_page(
-=======
 PositiveNumbersAndNol = strategies.integers(min_value=0)
 
 
 @given(catalog_id=PositiveNumbersAndNol)
 def test_ok_item_detail_page(
->>>>>>> feature/initial-views
     client: Client,
     catalog_item_detail_body: str,
     catalog_id: int,
@@ -30,6 +21,7 @@ def test_ok_item_detail_page(
     assert response.content.decode() == catalog_item_detail_body
 
 
+@given(catalog_id=NegativeNumbers)
 def test_not_found_item_detail_page(
     client: Client,
     catalog_item_detail_body: str,
@@ -41,8 +33,19 @@ def test_not_found_item_detail_page(
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
-<<<<<<< HEAD
-@given(catalog_id=PositiveNumbers)
+@given(catalog_id=strategies.text())
+def test_text_item_detail_page(
+    client: Client,
+    catalog_item_detail_body: str,
+    catalog_id: str,
+):
+    """This test ensures that item detail page get 404."""
+    response = client.get('catalog/{catalog_id}'.format(catalog_id=catalog_id))
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+
+
+@given(catalog_id=PositiveNumbersAndNol)
 def test_true_statement_regex_url_item_detail(client: Client, catalog_id: str):
     """This test ensures that regex works."""
     response = client.get(
@@ -52,7 +55,7 @@ def test_true_statement_regex_url_item_detail(client: Client, catalog_id: str):
     assert response.status_code == HTTPStatus.OK
 
 
-@given(catalog_id=PositiveNumbers)
+@given(catalog_id=PositiveNumbersAndNol)
 def test_true_statement_converter_url_item_detail(
     client: Client,
     catalog_id: str,
@@ -74,15 +77,5 @@ def test_false_statement_converter_item_detail(
     response = client.get(
         '/catalog/converter/{catalog_id}/'.format(catalog_id=catalog_id),
     )
-=======
-@given(catalog_id=strategies.text())
-def test_text_item_detail_page(
-    client: Client,
-    catalog_item_detail_body: str,
-    catalog_id: str,
-):
-    """This test ensures that item detail page get 404."""
-    response = client.get('catalog/{catalog_id}'.format(catalog_id=catalog_id))
->>>>>>> feature/initial-views
 
     assert response.status_code == HTTPStatus.NOT_FOUND
