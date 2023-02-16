@@ -245,3 +245,6 @@ artifacts/
 
 # ipython:
 .ipython/
+
+# hypothesis
+.hypothesis/
