@@ -10,8 +10,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from typing import Dict, List, Tuple, Union
 
+from django.urls import register_converter
 from django.utils.translation import gettext_lazy as _
 
+from server.apps.core.converters import OwnIntegerConverter
 from server.settings import components
 
 # Quick-start development settings - unsuitable for production
@@ -80,6 +82,7 @@ ROOT_URLCONF = 'server.urls'
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
+register_converter(OwnIntegerConverter, 'own_int')
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

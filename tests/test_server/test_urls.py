@@ -2,6 +2,7 @@ from http import HTTPStatus
 
 import pytest
 from django.test import Client
+from django.urls import reverse
 
 
 @pytest.mark.django_db()
@@ -51,3 +52,11 @@ def test_specials_txt(client: Client, page: str) -> None:
 
     assert response.status_code == HTTPStatus.OK
     assert response.get('Content-Type') == 'text/plain'
+
+
+def test_coffee_endpoint(client: Client, coffee_body: str):
+    """This test ensures that coffee page works."""
+    response = client.get(reverse('coffee'))
+
+    assert response.status_code == HTTPStatus.IM_A_TEAPOT
+    assert response.content.decode() == coffee_body
