@@ -44,6 +44,8 @@ pytest-randomly = "^3.12"
 pytest-timeout = "^2.1"
 django-test-migrations = "^1.2"
 hypothesis = "^6.54"
+mock = "^5.0.1"
+types-mock = "^5.0.0.4"
 
 mypy = "^0.991"
 django-stubs = "^1.13"

@@ -78,6 +78,11 @@ MIDDLEWARE: Tuple[str, ...] = (
     'django_http_referrer_policy.middleware.ReferrerPolicyMiddleware',
 )
 
+if components.config("REVERSE_MIDDLEWARE", cast=bool, default=False):
+    MIDDLEWARE = (   # noqa: WPS440
+        'server.apps.core.middleware.ReverseMiddleware',
+    ) + MIDDLEWARE
+
 ROOT_URLCONF = 'server.urls'
 
 WSGI_APPLICATION = 'server.wsgi.application'
@@ -99,7 +104,6 @@ DATABASES = {
     },
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -120,7 +124,6 @@ LOCALE_PATHS = (
 USE_TZ = True
 TIME_ZONE = 'UTC'
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -130,7 +133,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
 
 # Templates
 # https://docs.djangoproject.com/en/3.2/ref/templates/api
@@ -155,7 +157,6 @@ TEMPLATES = [{
     },
 }]
 
-
 # Media files
 # Media root dir is commonly changed in production
 # (see development.py and production.py).
@@ -163,7 +164,6 @@ TEMPLATES = [{
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = components.BASE_DIR.joinpath('media')
-
 
 # Django authentication system
 # https://docs.djangoproject.com/en/3.2/topics/auth/
@@ -179,7 +179,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
-
 
 # Security
 # https://docs.djangoproject.com/en/3.2/topics/security/
@@ -198,12 +197,10 @@ REFERRER_POLICY = 'same-origin'
 # https://github.com/adamchainz/django-permissions-policy#setting
 PERMISSIONS_POLICY: Dict[str, Union[str, List[str]]] = {}  # noqa: WPS234
 
-
 # Timeouts
 # https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-EMAIL_TIMEOUT
 
 EMAIL_TIMEOUT = 5
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

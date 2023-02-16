@@ -1345,6 +1345,23 @@ files = [
 ]
 
 [[package]]
+name = "mock"
+version = "5.0.1"
+description = "Rolling backport of unittest.mock for all Pythons"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mock-5.0.1-py3-none-any.whl", hash = "sha256:c41cfb1e99ba5d341fbcc5308836e7d7c9786d302f995b2c271ce2144dece9eb"},
+    {file = "mock-5.0.1.tar.gz", hash = "sha256:e3ea505c03babf7977fd21674a69ad328053d414f05e6433c30d8fa14a534a6b"},
+]
+
+[package.extras]
+build = ["blurb", "twine", "wheel"]
+docs = ["sphinx"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "more-itertools"
 version = "9.0.0"
 description = "More routines for operating on iterables, beyond itertools"
@@ -2154,6 +2171,18 @@ files = [
 ]
 
 [[package]]
+name = "types-mock"
+version = "5.0.0.4"
+description = "Typing stubs for mock"
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-mock-5.0.0.4.tar.gz", hash = "sha256:a44349c20da7bd5c5cc504815b1373ba6fe330cba4e0c7be554873a688f84cd6"},
+    {file = "types_mock-5.0.0.4-py3-none-any.whl", hash = "sha256:729f16069cbfdf95136d6a188f33a82f1d473c3f75e08682547a5a8d63c208f8"},
+]
+
+[[package]]
 name = "types-pytz"
 version = "2022.6.0.1"
 description = "Typing stubs for pytz"
@@ -2289,4 +2318,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "23189e9d705ab12358dc143ba7b75002e979dd028e0473f3a3b96da7c7cba7d2"
+content-hash = "08a980969569350a81758fd377ed7775927cbff9af97823e615afb6784f27810"
