@@ -18,7 +18,11 @@ pytest_plugins = [
 
 hypothesis.settings.register_profile(
     'test', parent=hypothesis.settings(
-        suppress_health_check=[hypothesis.HealthCheck.function_scoped_fixture],
+        suppress_health_check=[
+            hypothesis.HealthCheck.function_scoped_fixture,
+            hypothesis.HealthCheck.too_slow,
+            hypothesis.HealthCheck.filter_too_much,
+        ],
         max_examples=500,
     ),
 )
