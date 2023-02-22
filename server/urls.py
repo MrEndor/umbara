@@ -29,7 +29,7 @@ urlpatterns = [
     path('about/', include(about_urls, namespace='about')),
     path('catalog/', include(catalog_urls, namespace='catalog')),
 
-    path('/coffee', coffee, name='coffee'),
+    path('coffee/', coffee, name='coffee'),
 
     # Health checks:
     path('health/', include(health_urls)),
