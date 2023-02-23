@@ -11,6 +11,7 @@ SLUG_VALIDATION_TEXT = (
     'Enter a valid “slug” consisting of letters, ' +
     'numbers, underscores or hyphens.'
 )
+slug_strategy = strategies.from_regex('^[0-9-_a-zA-Z]+$')
 
 
 class TestCategoryModel(django.TestCase):
@@ -129,8 +130,12 @@ def test_normalized_name(
 ):
     """This test verifies that identical normalized tests cannot be save."""
     for (first, second) in catalog_tag_normalized_names:
-        first_instance = CatalogCategory(name=first)
-        second_instance = CatalogCategory(name=second)
+        first_instance = CatalogCategory(
+            name=first, slug=slug_strategy.example(),
+        )
+        second_instance = CatalogCategory(
+            name=second, slug=slug_strategy.example(),
+        )
         first_instance.save()
 
         with pytest.raises(
@@ -146,8 +151,12 @@ def test_normalized_different_name(
 ):
     """This test checks the normalized name for the sameness."""
     for (first, second) in catalog_tag_normalized_different_names:
-        first_instance = CatalogCategory(name=first)
-        second_instance = CatalogCategory(name=second)
+        first_instance = CatalogCategory(
+            name=first, slug=slug_strategy.example(),
+        )
+        second_instance = CatalogCategory(
+            name=second, slug=slug_strategy.example(),
+        )
 
         first_instance.save()
         second_instance.clean()
