@@ -1,9 +1,8 @@
-from server.apps.core.base_models import Identifiable, Nameable, Publishable
+from server.apps.core.base_models import Identifiable, Publishable
 
 
 class BaseModel(
     Identifiable,
-    Nameable,
     Publishable,
 ):
     """Base Catalog model."""
