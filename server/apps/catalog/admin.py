@@ -2,16 +2,16 @@ from django.contrib import admin
 
 from server.apps.catalog.models import CatalogCategory, CatalogItem, CatalogTag
 
-NAME_FIELD = 'name'
+NameField = 'name'
 
 
 @admin.register(CatalogItem)
 class AdminModelItem(admin.ModelAdmin[CatalogItem]):
     """Views for item model."""
 
-    list_display = (NAME_FIELD, 'is_published')
+    list_display = (NameField, 'is_published')
     list_editable = ('is_published',)
-    list_display_links = (NAME_FIELD,)
+    list_display_links = (NameField,)
     filter_horizontal = ('tags',)
 
 
@@ -19,13 +19,13 @@ class AdminModelItem(admin.ModelAdmin[CatalogItem]):
 class AdminModelTag(admin.ModelAdmin[CatalogTag]):
     """Views for tag model."""
 
-    list_display = (NAME_FIELD,)
-    list_display_links = (NAME_FIELD,)
+    list_display = (NameField,)
+    list_display_links = (NameField,)
 
 
 @admin.register(CatalogCategory)
 class AdminModelCategory(admin.ModelAdmin[CatalogCategory]):
     """Views for category model."""
 
-    list_display = (NAME_FIELD,)
-    list_display_links = (NAME_FIELD,)
+    list_display = (NameField,)
+    list_display_links = (NameField,)
