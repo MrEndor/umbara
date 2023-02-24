@@ -1,4 +1,4 @@
-from server.apps.catalog.models.base import BaseModel
+from server.apps.core.base_models import BaseModel
 
 
 class CatalogTag(

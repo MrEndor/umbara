@@ -1,9 +1,8 @@
 from django.core import validators
 from django.db import models
 
-from server.apps.catalog import constances
-from server.apps.catalog.models.base import BaseModel
-from server.apps.core.base_models import Slugable
+from server.apps.catalog import constants
+from server.apps.core.base_models import BaseModel, Slugable
 
 
 class CatalogCategory(
@@ -13,15 +12,15 @@ class CatalogCategory(
     """Base Category Model."""
 
     weight = models.IntegerField(
-        default=constances.CATEGORY_DEFAULT_WEIGHT,
+        default=constants.CATEGORY_DEFAULT_WEIGHT,
         validators=[
-            validators.MinValueValidator(constances.CATEGORY_WEIGHT_MIN),
-            validators.MaxValueValidator(constances.CATEGORY_WEIGHT_MAX),
+            validators.MinValueValidator(constants.CATEGORY_WEIGHT_MIN),
+            validators.MaxValueValidator(constants.CATEGORY_WEIGHT_MAX),
         ],
-        verbose_name='Вес',
+        verbose_name='вес',
         help_text='Вес должен быть больше {minimum} и меньше {maximum}'.format(
-            minimum=constances.CATEGORY_WEIGHT_MIN,
-            maximum=constances.CATEGORY_WEIGHT_MAX,
+            minimum=constants.CATEGORY_WEIGHT_MIN,
+            maximum=constants.CATEGORY_WEIGHT_MAX,
         ),
     )
 

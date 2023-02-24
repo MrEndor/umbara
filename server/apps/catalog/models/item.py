@@ -1,9 +1,9 @@
 from django.db import models
 
-from server.apps.catalog import constances
-from server.apps.catalog.models.base import BaseModel
+from server.apps.catalog import constants
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
+from server.apps.core.base_models import BaseModel
 from server.apps.core.validators import is_contains
 
 _HELP_TEXT = """
@@ -18,22 +18,22 @@ class CatalogItem(
 
     text = models.TextField(
         validators=[
-            is_contains(*constances.CATALOG_ITEM_KEYWORDS),
+            is_contains(*constants.CATALOG_ITEM_KEYWORDS),
         ],
-        verbose_name='Описание',
+        verbose_name='описание',
         help_text=_HELP_TEXT.format(
-            words=', '.join(constances.CATALOG_ITEM_KEYWORDS),
+            words=', '.join(constants.CATALOG_ITEM_KEYWORDS),
         ),
     )
     tags = models.ManyToManyField(
         CatalogTag,
-        verbose_name='Теги',
+        verbose_name='теги',
     )
     category = models.ForeignKey(
         CatalogCategory,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='Категории',
+        verbose_name='категории',
     )
 
     class Meta:

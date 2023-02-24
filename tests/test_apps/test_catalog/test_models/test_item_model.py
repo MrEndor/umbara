@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from hypothesis import given, settings, strategies
 from hypothesis.extra import django
 
-from server.apps.catalog.constances import CATALOG_ITEM_KEYWORDS
+from server.apps.catalog.constants import CATALOG_ITEM_KEYWORDS
 from server.apps.catalog.models import CatalogCategory, CatalogItem, CatalogTag
 
 
