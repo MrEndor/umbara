@@ -1,9 +1,9 @@
-from server.apps.core import constances
+from server.apps.core import constants
 
 
 def normalize(string: str) -> str:
     """Normalize a string."""
     string = string.lower()
-    table = string.maketrans(constances.REPLACEMENT_TABLE)
+    table = string.maketrans(constants.REPLACEMENT_TABLE)
 
     return string.translate(table)

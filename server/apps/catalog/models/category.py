@@ -3,8 +3,7 @@ from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
-from server.apps.catalog import constances
-from server.apps.catalog.models.base import BaseModel
+from server.apps.catalog import constants
 from server.apps.core.base_models import NormalizedName, Slugable
 
 WEIGHT_HELP_TEXT = _(
@@ -13,23 +12,22 @@ WEIGHT_HELP_TEXT = _(
 
 
 class CatalogCategory(
-    BaseModel,
-    Slugable,
     NormalizedName,
+    Slugable,
 ):
     """Base Category Model."""
 
     weight = models.IntegerField(
-        default=constances.CATEGORY_DEFAULT_WEIGHT,
+        default=constants.CATEGORY_DEFAULT_WEIGHT,
         validators=[
-            validators.MinValueValidator(constances.CATEGORY_WEIGHT_MIN),
-            validators.MaxValueValidator(constances.CATEGORY_WEIGHT_MAX),
+            validators.MinValueValidator(constants.CATEGORY_WEIGHT_MIN),
+            validators.MaxValueValidator(constants.CATEGORY_WEIGHT_MAX),
         ],
         verbose_name=_('Weight'),
         help_text=format_lazy(
             WEIGHT_HELP_TEXT,
-            minimum=constances.CATEGORY_WEIGHT_MIN,
-            maximum=constances.CATEGORY_WEIGHT_MAX,
+            minimum=constants.CATEGORY_WEIGHT_MIN,
+            maximum=constants.CATEGORY_WEIGHT_MAX,
         ),
     )
 

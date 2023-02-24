@@ -11,7 +11,7 @@ def is_contains(*words) -> Callable[[str], None]:
 
     @wraps(is_contains)
     def validator(text: str):  # noqa: WPS430
-        tokens = text.lower().split()
+        tokens = text.lower()
         contains = [
             word.lower() in tokens for word in words
         ]
