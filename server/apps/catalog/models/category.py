@@ -23,7 +23,7 @@ class CatalogCategory(
             validators.MinValueValidator(constants.CATEGORY_WEIGHT_MIN),
             validators.MaxValueValidator(constants.CATEGORY_WEIGHT_MAX),
         ],
-        verbose_name=_('Weight'),
+        verbose_name=_('weight'),
         help_text=format_lazy(
             WEIGHT_HELP_TEXT,
             minimum=constants.CATEGORY_WEIGHT_MIN,

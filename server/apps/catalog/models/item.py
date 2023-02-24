@@ -23,7 +23,7 @@ class CatalogItem(
         validators=[
             is_contains(*constants.CATALOG_ITEM_KEYWORDS),
         ],
-        verbose_name=_('Description'),
+        verbose_name=_('description'),
         help_text=format_lazy(
             _HELP_TEXT,
             words=', '.join(constants.CATALOG_ITEM_KEYWORDS),
@@ -31,13 +31,13 @@ class CatalogItem(
     )
     tags = models.ManyToManyField(
         CatalogTag,
-        verbose_name=_('Tags'),
+        verbose_name=_('tags'),
     )
     category = models.ForeignKey(
         CatalogCategory,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name=_('Categories'),
+        verbose_name=_('categories'),
     )
 
     class Meta:

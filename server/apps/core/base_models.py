@@ -13,7 +13,7 @@ class BaseModel(models.Model):
 
     name = models.CharField(
         max_length=constants.MAX_NAME_LENGTH,
-        verbose_name=_('Name'),
+        verbose_name=_('name'),
         help_text=format_lazy(
             _('Maximum length {maximum}'),
             maximum=constants.MAX_NAME_LENGTH,
@@ -21,7 +21,7 @@ class BaseModel(models.Model):
     )
     is_published = models.BooleanField(
         default=True,
-        verbose_name=_('Published'),
+        verbose_name=_('published'),
     )
 
     class Meta:
@@ -53,7 +53,7 @@ class NormalizedName(BaseModel):
         editable=False,
         unique=True,
         null=True,
-        verbose_name=_('Normalized Name'),
+        verbose_name=_('normalized name'),
     )
 
     class Meta:

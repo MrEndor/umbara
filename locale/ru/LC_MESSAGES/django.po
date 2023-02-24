@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 19:15+0300\n"
+"POT-Creation-Date: 2023-02-24 15:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\server\apps\catalog\models\category.py:10
+#, python-brace-format
 msgid "Weight must be greater than {minimum} and less than {maximum}"
 msgstr "Вес должен быть больше {minimum} и меньше {maximum}"
 
 #: .\server\apps\catalog\models\category.py:26
-msgid "Weight"
-msgstr "Вес"
+msgid "weight"
+msgstr "вес"
 
 #: .\server\apps\catalog\models\category.py:35
 msgid "Category"
 msgstr "Категория"
 
 #: .\server\apps\catalog\models\category.py:36
-#: .\server\apps\catalog\models\item.py:39
 msgid "Categories"
 msgstr "Категории"
 
@@ -45,45 +45,56 @@ msgid ""
 msgstr ""
 "Описание должно быть больше чем из 2x слов и содержать слова \"{words}\""
 
-#: .\server\apps\catalog\models\item.py:25
-msgid "Description"
-msgstr "Описание"
+#: .\server\apps\catalog\models\item.py:26
+msgid "description"
+msgstr "описание"
 
-#: .\server\apps\catalog\models\item.py:33
-#: .\server\apps\catalog\models\tag.py:14
-msgid "Tags"
-msgstr "Теги"
+#: .\server\apps\catalog\models\item.py:34
+msgid "tags"
+msgstr "теги"
 
-#: .\server\apps\catalog\models\item.py:43
+#: .\server\apps\catalog\models\item.py:40
+#, fuzzy
+#| msgid "Categories"
+msgid "categories"
+msgstr "Категории"
+
+#: .\server\apps\catalog\models\item.py:44
 msgid "Product"
 msgstr "Продукт"
 
-#: .\server\apps\catalog\models\item.py:44
+#: .\server\apps\catalog\models\item.py:45
 msgid "Products"
 msgstr "Продукты"
 
-#: .\server\apps\catalog\models\tag.py:13
+#: .\server\apps\catalog\models\tag.py:12
 msgid "Tag"
 msgstr "Тег"
 
-#: .\server\apps\core\base_models.py:35
-msgid "Name"
-msgstr "Название"
+#: .\server\apps\catalog\models\tag.py:13
+msgid "Tags"
+msgstr "Теги"
 
-#: .\server\apps\core\base_models.py:37
+#: .\server\apps\core\base_models.py:16
+msgid "name"
+msgstr "название"
+
+#: .\server\apps\core\base_models.py:18
 #, python-brace-format
 msgid "Maximum length {maximum}"
 msgstr "Максимальная длина {maximum}"
 
-#: .\server\apps\core\base_models.py:52
-msgid "Published"
-msgstr "Опубликовано"
+#: .\server\apps\core\base_models.py:24
+#, fuzzy
+#| msgid "published"
+msgid "published"
+msgstr "опубликовано"
 
-#: .\server\apps\core\base_models.py:84
-msgid "Normalized Name"
-msgstr "Нормализованное имя"
+#: .\server\apps\core\base_models.py:56
+msgid "normalized name"
+msgstr "нормализованное имя"
 
-#: .\server\apps\core\base_models.py:95
+#: .\server\apps\core\base_models.py:71
 msgid "Name is already exists"
 msgstr "Название уже существует"
 
