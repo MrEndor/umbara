@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import format_lazy
+from django.utils.translation import gettext_lazy as _
 
 from server.apps.catalog import constants
 from server.apps.catalog.models.category import CatalogCategory
@@ -6,9 +8,10 @@ from server.apps.catalog.models.tag import CatalogTag
 from server.apps.core.base_models import BaseModel
 from server.apps.core.validators import is_contains
 
-_HELP_TEXT = """
-Описание должно быть больше чем из 2x слов и содержать слова "{words}"
-"""
+_HELP_TEXT = _(
+    'The description should be more than 2x words and ' +
+    'contain the words "{words}"',
+)
 
 
 class CatalogItem(
@@ -20,22 +23,24 @@ class CatalogItem(
         validators=[
             is_contains(*constants.CATALOG_ITEM_KEYWORDS),
         ],
-        verbose_name='описание',
-        help_text=_HELP_TEXT.format(
+        verbose_name=_('description'),
+        help_text=format_lazy(
+            _HELP_TEXT,
             words=', '.join(constants.CATALOG_ITEM_KEYWORDS),
         ),
     )
     tags = models.ManyToManyField(
         CatalogTag,
-        verbose_name='теги',
+        verbose_name=_('tags'),
     )
     category = models.ForeignKey(
         CatalogCategory,
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='категории',
+        verbose_name=_('categories'),
     )
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
+        db_table = 'catalog_item'
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')

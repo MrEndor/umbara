@@ -77,3 +77,8 @@ Running linter flake8
 ```shell
 poetry run flake8 .
 ```
+
+Compiling localization
+```shell
+poetry run python manage.py compilemessages
+```
