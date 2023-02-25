@@ -2082,6 +2082,18 @@ files = [
 ]
 
 [[package]]
+name = "sorl-thumbnail"
+version = "12.9.0"
+description = "Thumbnails for Django"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "sorl-thumbnail-12.9.0.tar.gz", hash = "sha256:0cbc2f52152e7f2266e3c2cb4ae5d83afd2e96fd5e1c42e5667362baaa3d2db3"},
+    {file = "sorl_thumbnail-12.9.0-py3-none-any.whl", hash = "sha256:ec586724bea7dc8c53561ce18335ea641fcd0e560d6387b2353a2afdd06705a4"},
+]
+
+[[package]]
 name = "sortedcontainers"
 version = "2.4.0"
 description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
@@ -2351,4 +2363,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "a58f4be957124de0dc6be04d3b738c7efa3f75264688b1735d2808071f91dde3"
+content-hash = "4fbb40e38b82267dd1906332bdb8418206f0add1423516b378105b5f47c99aa8"
