@@ -2,12 +2,20 @@ from django.contrib import admin
 
 from server.apps.catalog.models import CatalogCategory, CatalogItem, CatalogTag
 
-CatalogItemNameField: str = CatalogItem.name.field.name  # type: ignore[attr-defined]
-CatalogItemPublishedField: str = CatalogItem.is_published.field.name  # type: ignore[attr-defined]
+CatalogItemNameField: str = (
+    CatalogItem.name.field.name  # type: ignore[attr-defined]
+)
+CatalogItemPublishedField: str = (
+    CatalogItem.is_published.field.name  # type: ignore[attr-defined]
+)
 CatalogItemTagsField: str = CatalogItem.tags.field.name
 
-CatalogTagNameField: str = CatalogTag.name.field.name  # type: ignore[attr-defined]
-CatalogCategoryField: str = CatalogTag.name.field.name  # type: ignore[attr-defined]
+CatalogTagNameField: str = (
+    CatalogTag.name.field.name  # type: ignore[attr-defined]
+)
+CatalogCategoryField: str = (
+    CatalogTag.name.field.name  # type: ignore[attr-defined]
+)
 
 
 @admin.register(CatalogItem)
