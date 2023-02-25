@@ -1,3 +1,5 @@
+from typing import List, Tuple
+
 import pytest
 from django.core.exceptions import ValidationError
 from hypothesis import given, settings, strategies
@@ -9,6 +11,7 @@ SLUG_VALIDATION_TEXT = (
     'Enter a valid “slug” consisting of letters, ' +
     'numbers, underscores or hyphens.'
 )
+slug_strategy = strategies.from_regex('^[0-9-_a-zA-Z]+$')
 
 
 class TestCategoryModel(django.TestCase):
@@ -83,3 +86,41 @@ class TestCategoryModel(django.TestCase):
             instance.full_clean()
 
         assert instance.weight <= 0
+
+
+@pytest.mark.django_db(transaction=True)
+def test_normalized_name(
+    catalog_tag_normalized_names: List[Tuple[str, str]],
+):
+    """This test verifies that identical normalized tests cannot be save."""
+    for (first, second) in catalog_tag_normalized_names:
+        first_instance = CatalogCategory(
+            name=first, slug=slug_strategy.example(),
+        )
+        second_instance = CatalogCategory(
+            name=second, slug=slug_strategy.example(),
+        )
+        first_instance.save()
+
+        with pytest.raises(
+            ValidationError,
+            match='Name is already exists',
+        ):
+            second_instance.clean()
+
+
+@pytest.mark.django_db(transaction=True)
+def test_normalized_different_name(
+    catalog_tag_normalized_different_names: List[Tuple[str, str]],
+):
+    """This test checks the normalized name for the sameness."""
+    for (first, second) in catalog_tag_normalized_different_names:
+        first_instance = CatalogCategory(
+            name=first, slug=slug_strategy.example(),
+        )
+        second_instance = CatalogCategory(
+            name=second, slug=slug_strategy.example(),
+        )
+
+        first_instance.save()
+        second_instance.clean()
