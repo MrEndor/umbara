@@ -41,5 +41,6 @@ class CatalogItem(
     )
 
     class Meta:
+        db_table = 'catalog_item'
         verbose_name = _('Product')
         verbose_name_plural = _('Products')

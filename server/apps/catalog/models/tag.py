@@ -9,5 +9,6 @@ class CatalogTag(
     """Base Catalog Tag Model."""
 
     class Meta:
+        db_table = 'catalog_tag'
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
