@@ -621,14 +621,14 @@ test = ["coverage (>=5.5)", "django-add-default-value (>=0.4.0)", "mysqlclient (
 
 [[package]]
 name = "django-permissions-policy"
-version = "4.14.0"
+version = "4.15.0"
 description = "Set the draft security HTTP header Permissions-Policy (previously Feature-Policy) on your Django app."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "django-permissions-policy-4.14.0.tar.gz", hash = "sha256:923db75e74b1e363c84f2a7723c4af6fd78a5baa6c7fbdb0850e5b38d88e0a06"},
-    {file = "django_permissions_policy-4.14.0-py3-none-any.whl", hash = "sha256:a0f20a2c56409126c67bb4f85ef0e51625aec6a0a02b912fda70b466fcf2c0ed"},
+    {file = "django_permissions_policy-4.15.0-py3-none-any.whl", hash = "sha256:e80b535b771ebf166fc1452254ce07772affac9b7960975b3909510760d653ac"},
+    {file = "django_permissions_policy-4.15.0.tar.gz", hash = "sha256:43f72a66c40b68c8de47ac9390a8f31994551daeaef196c9d20761b38ab324ca"},
 ]
 
 [package.dependencies]
@@ -2288,5 +2288,5 @@ setuptools = "*"
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11.1"
-content-hash = "23189e9d705ab12358dc143ba7b75002e979dd028e0473f3a3b96da7c7cba7d2"
+python-versions = "~3.11"
+content-hash = "ca098fb728d7f1c79cf4cda314d0e0292b17a667f01e2042dbe9e787bb7373ef"
