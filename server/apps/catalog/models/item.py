@@ -77,7 +77,7 @@ class CatalogItem(
     @cached_property
     def images(self):
         """Property for all product pictures."""
-        return ImageItem.objects.filter(item=self.id).all()
+        return ImageItem.objects.filter(product=self.id).all()
 
     class Meta:
         db_table = 'catalog_item'
