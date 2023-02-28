@@ -12,6 +12,7 @@ files serving technique in development.
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admindocs import urls as admindocs_urls
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 from django.views.generic import TemplateView
 from health_check import urls as health_urls
@@ -25,7 +26,7 @@ admin.autodiscover()
 
 urlpatterns = [
     # Apps:
-    path('/', include(homepage_urls, namespace='homepage')),
+    path('', include(homepage_urls, namespace='homepage')),
     path('about/', include(about_urls, namespace='about')),
     path('catalog/', include(catalog_urls, namespace='catalog')),
 
@@ -59,4 +60,5 @@ if settings.DEBUG:  # pragma: no cover
         *urlpatterns,
         # Serving media files in development only:
         *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+        *staticfiles_urlpatterns()
     ]
