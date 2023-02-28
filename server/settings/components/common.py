@@ -25,6 +25,7 @@ SECRET_KEY = components.config('DJANGO_SECRET_KEY')
 
 INSTALLED_APPS: Tuple[str, ...] = (
     # Your apps go here:
+    'server.apps.core',
     'server.apps.homepage',
     'server.apps.catalog',
     'server.apps.about',
@@ -39,6 +40,15 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # django-admin:
     'django.contrib.admin',
     'django.contrib.admindocs',
+
+    # Image cleanup
+    'django_cleanup.apps.CleanupConfig',
+
+    # sorl-thumbnail
+    'sorl.thumbnail',
+
+    # bootstrap5
+    'bootstrap5',
 
     # Security:
     'axes',
@@ -125,6 +135,10 @@ TIME_ZONE = 'UTC'
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = components.BASE_DIR.joinpath('staticfiles')
+STATICFILES_DIRS = (
+    components.BASE_DIR.joinpath('static'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -208,3 +222,34 @@ EMAIL_TIMEOUT = 5
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
+BOOTSTRAP5 = {
+    'error_css_class': 'bootstrap5-error',
+    'required_css_class': 'bootstrap5-required',
+    'javascript_in_head': True,
+}
+
+# Ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            [
+                'NumberedList',
+                'BulletedList',
+                '-',
+                'Outdent',
+                'Indent',
+                '-',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock',
+            ],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ],
+    }
+}

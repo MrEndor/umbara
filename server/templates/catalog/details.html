@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'catalog/css/details.css' %}" media="screen">
+{% endblock links %}
+
+{% block content %}
+<section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-edbd">
+<div class="u-clearfix u-sheet u-valign-middle u-sheet-1 align-items-center">
+  <div class="u-expanded-width u-products u-products-1">
+    <div class="u-image-1">
+    {% thumbnail product.main_image "500x300" as image %}
+      <img
+        class="center-block"
+        src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"
+      >
+    {% endthumbnail %}
+    </div>
+      <h1 class="u-align-center u-text u-text-1">{{ product.name }}</h1>
+      <h3 class="u-text u-text-3">Описание:</h3>
+        <p class="u-product-control u-product-desc u-text u-text-5"> {{ product.text|linebreaksbr }}</p>
+      <h3 class="u-text u-text-3">Категория: {{ product.category.name }}</h3>
+      {% if product.tags %}
+        <h3 class="u-align-center u-text u-text-2">Теги:</h3>
+          <p class="u-product-control u-product-desc u-text u-text-2">
+          {% for tag in product.tags.all %}
+            {{ tag.name }}
+          {% endfor %}
+          </p>
+      {% endif %}
+      {% if product.images %}
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 u-text-4">
+        {% for image_item in product.images %}
+          {% thumbnail image_item "80x80" as formatted_image %}
+            <img
+              src="{{ formatted_image.url }}" width="{{ formatted_image.width }}" height="{{ formatted_image.height }}"
+              class="shadow-1-strong rounded mb-4"
+            >
+          {% endthumbnail %}
+        {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+</section>
+{% endblock content %}

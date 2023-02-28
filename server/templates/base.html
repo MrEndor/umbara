@@ -1,0 +1,34 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Umbara market</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  {% block links %}
+  {% endblock links %}
+  <script>
+$(document).ready(function() {
+  $('li.active').removeClass('active').removeAttr('aria-current');
+  $('a[href="' + location.pathname + '"]').closest('li').addClass('active').attr('aria-current', 'page');
+});
+  </script>
+</head>
+<body>
+<div class="container">
+  {% block nav %}
+    {% include 'nav.html' %}
+  {% endblock nav %}
+  <div class="content" style="padding: 20px 0">
+    {% block content %}
+      {% include 'cat.html' %}
+    {% endblock content %}
+  </div>
+</div>
+</body>
+</html>

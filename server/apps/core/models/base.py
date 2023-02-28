@@ -28,6 +28,10 @@ class BaseModel(models.Model):
         verbose_name = 'BaseModel'
         abstract = True
 
+    def __str__(self):
+        """Method for string the model."""
+        return self.name
+
 
 class Slugable(models.Model):
     """Abstract model for object slug."""
