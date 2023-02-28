@@ -1,11 +1,14 @@
+from functools import cached_property
+
 from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
+from sorl import thumbnail
 
 from server.apps.catalog import constants
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
-from server.apps.core.base_models import BaseModel
+from server.apps.core.models import BaseModel
 from server.apps.core.validators import is_contains
 
 _HELP_TEXT = _(

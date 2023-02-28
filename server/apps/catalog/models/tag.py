@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
-from server.apps.core.base_models import NormalizedName
+from server.apps.core.models import NormalizedName
 
 
 class CatalogTag(
