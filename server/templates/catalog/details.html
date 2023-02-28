@@ -34,7 +34,7 @@
       {% if product.images %}
         <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 u-text-4">
         {% for image_item in product.images %}
-          {% thumbnail product.main_image "80x80" as formatted_image %}
+          {% thumbnail image_item "80x80" as formatted_image %}
             <img
               src="{{ formatted_image.url }}" width="{{ formatted_image.width }}" height="{{ formatted_image.height }}"
               class="shadow-1-strong rounded mb-4"
