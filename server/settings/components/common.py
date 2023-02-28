@@ -25,6 +25,7 @@ SECRET_KEY = components.config('DJANGO_SECRET_KEY')
 
 INSTALLED_APPS: Tuple[str, ...] = (
     # Your apps go here:
+    'server.apps.core',
     'server.apps.homepage',
     'server.apps.catalog',
     'server.apps.about',
@@ -224,7 +225,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 BOOTSTRAP5 = {
-    "error_css_class": "bootstrap5-error",
-    "required_css_class": "bootstrap5-required",
-    "javascript_in_head": True,
+    'error_css_class': 'bootstrap5-error',
+    'required_css_class': 'bootstrap5-required',
+    'javascript_in_head': True,
 }
