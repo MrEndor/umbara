@@ -37,10 +37,7 @@ class ImageItem(models.Model):
 
     def __str__(self):
         """Method for string the model."""
-        return '{product}/{image}'.format(
-            product=self.product.name,
-            image=self.image.name,
-        )
+        return str(self.image)
 
 
 class CatalogItem(
