@@ -50,6 +50,9 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # bootstrap5
     'bootstrap5',
 
+    # ckeditor
+    'ckeditor',
+
     # Security:
     'axes',
 
@@ -249,7 +252,9 @@ CKEDITOR_CONFIGS = {
                 'JustifyBlock',
             ],
             ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source']
+            ['RemoveFormat', 'Source'],
         ],
-    }
+    },
 }
+
+CKEDITOR_UPLOAD_PATH = MEDIA_ROOT / 'uploads'
