@@ -248,3 +248,6 @@ artifacts/
 
 # hypothesis
 .hypothesis/
+
+# db for rivewer
+!reviewer.sqlite3
