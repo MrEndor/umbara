@@ -61,4 +61,5 @@ if settings.DEBUG:  # pragma: no cover
         # Serving media files in development only:
         *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
         *staticfiles_urlpatterns(),
+        path('ckeditor/', include('ckeditor_uploader.urls')),
     ]
