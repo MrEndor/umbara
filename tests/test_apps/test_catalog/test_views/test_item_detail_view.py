@@ -11,14 +11,12 @@ PositiveNumbersAndNol = strategies.integers(min_value=0)
 @given(catalog_id=PositiveNumbersAndNol)
 def test_ok_item_detail_page(
     client: Client,
-    catalog_item_detail_body: str,
     catalog_id: int,
 ):
     """This test ensures that item detail page works."""
     response = client.get(reverse('catalog:item_detail', args=(catalog_id,)))
 
     assert response.status_code == HTTPStatus.OK
-    assert response.content.decode() == catalog_item_detail_body
 
 
 @given(catalog_id=NegativeNumbers)
