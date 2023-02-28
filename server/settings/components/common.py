@@ -40,6 +40,15 @@ INSTALLED_APPS: Tuple[str, ...] = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
+    # Image cleanup
+    'django_cleanup.apps.CleanupConfig',
+
+    # sorl-thumbnail
+    'sorl.thumbnail',
+
+    # bootstrap5
+    'bootstrap5',
+
     # Security:
     'axes',
 
@@ -212,3 +221,10 @@ EMAIL_TIMEOUT = 5
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
+BOOTSTRAP5 = {
+    "error_css_class": "bootstrap5-error",
+    "required_css_class": "bootstrap5-required",
+    "javascript_in_head": True,
+}
