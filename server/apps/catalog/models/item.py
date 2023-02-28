@@ -17,6 +17,32 @@ _HELP_TEXT = _(
 )
 
 
+class ImageItem(models.Model):
+    """Image Item Model."""
+
+    image = thumbnail.ImageField(
+        upload_to='images',
+        verbose_name=_('image'),
+    )
+    product = models.ForeignKey(
+        'CatalogItem',
+        on_delete=models.CASCADE,
+        db_index=True,
+    )
+
+    class Meta:
+        db_table = 'catalog_images'
+        verbose_name = _('Image')
+        verbose_name_plural = _('Images')
+
+    def __str__(self):
+        """Method for string the model."""
+        return '{product}/{image}'.format(
+            product=self.product.name,
+            image=self.image.name,
+        )
+
+
 class CatalogItem(
     BaseModel,
 ):
@@ -42,6 +68,16 @@ class CatalogItem(
         null=True,
         verbose_name=_('categories'),
     )
+    main_image = thumbnail.ImageField(
+        upload_to='catalog_images',
+        verbose_name=_('image'),
+        null=True,
+    )
+
+    @cached_property
+    def images(self):
+        """Property for all product pictures."""
+        return ImageItem.objects.filter(item=self.id).all()
 
     class Meta:
         db_table = 'catalog_item'
