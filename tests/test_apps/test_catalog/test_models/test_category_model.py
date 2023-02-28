@@ -110,17 +110,25 @@ def test_normalized_name(
 
 
 @pytest.mark.django_db(transaction=True)
+@given(
+    first_slug=slug_strategy,
+    second_slug=slug_strategy,
+)
 def test_normalized_different_name(
     catalog_tag_normalized_different_names: List[Tuple[str, str]],
+    first_slug: str,
+    second_slug: str,
 ):
     """This test checks the normalized name for the sameness."""
     for (first, second) in catalog_tag_normalized_different_names:
         first_instance = CatalogCategory(
-            name=first, slug=slug_strategy.example(),
+            name=first, slug=first_slug,
         )
         second_instance = CatalogCategory(
-            name=second, slug=slug_strategy.example(),
+            name=second, slug=second_slug,
         )
 
         first_instance.save()
         second_instance.clean()
+
+        first_instance.delete()

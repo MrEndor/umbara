@@ -1,79 +1,93 @@
 from http import HTTPStatus
 
+import pytest
 from django.test.client import Client
 from django.urls import reverse
-from hypothesis import given, strategies
+from hypothesis import given, settings, strategies
+
+from server.apps.catalog.models import CatalogItem
+from tests.strategies.catalog import base_item_strategy
 
 NegativeNumbers = strategies.integers(max_value=-1)
 PositiveNumbersAndNol = strategies.integers(min_value=0)
 
 
-@given(catalog_id=PositiveNumbersAndNol)
+@pytest.mark.django_db(transaction=True)
+@given(product=base_item_strategy)
+@settings(max_examples=10)
 def test_ok_item_detail_page(
     client: Client,
-    catalog_id: int,
+    product: CatalogItem,
 ):
     """This test ensures that item detail page works."""
-    response = client.get(reverse('catalog:item_detail', args=(catalog_id,)))
+    response = client.get(reverse('catalog:item_detail', args=(product.id,)))
 
     assert response.status_code == HTTPStatus.OK
 
 
-@given(catalog_id=NegativeNumbers)
+@pytest.mark.django_db()
+@given(product_id=NegativeNumbers)
 def test_not_found_item_detail_page(
     client: Client,
-    catalog_item_detail_body: str,
-    catalog_id: int,
+    product_id: int,
 ):
     """This test ensures that item detail page get 404."""
-    response = client.get('catalog/{catalog_id}'.format(catalog_id=catalog_id))
+    response = client.get('catalog/{product_id}'.format(product_id=product_id))
 
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
-@given(catalog_id=strategies.text())
+@pytest.mark.django_db()
+@given(product_id=strategies.text())
 def test_text_item_detail_page(
     client: Client,
-    catalog_item_detail_body: str,
-    catalog_id: str,
+    product_id: str,
 ):
     """This test ensures that item detail page get 404."""
-    response = client.get('catalog/{catalog_id}'.format(catalog_id=catalog_id))
+    response = client.get('catalog/{product_id}'.format(product_id=product_id))
 
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
-@given(catalog_id=PositiveNumbersAndNol)
-def test_true_statement_regex_url_item_detail(client: Client, catalog_id: str):
+@pytest.mark.django_db()
+@given(product=base_item_strategy)
+@settings(max_examples=10)
+def test_true_statement_regex_url_item_detail(
+    client: Client,
+    product: CatalogItem,
+):
     """This test ensures that regex works."""
     response = client.get(
-        '/catalog/re/{catalog_id}/'.format(catalog_id=catalog_id),
+        '/catalog/re/{product_id}/'.format(product_id=product.id),
     )
 
     assert response.status_code == HTTPStatus.OK
 
 
-@given(catalog_id=PositiveNumbersAndNol)
+@pytest.mark.django_db()
+@given(product=base_item_strategy)
+@settings(max_examples=10)
 def test_true_statement_converter_url_item_detail(
     client: Client,
-    catalog_id: str,
+    product: CatalogItem,
 ):
     """This test ensures that converter works."""
     response = client.get(
-        reverse('catalog:convert_item_detail', args=(catalog_id,)),
+        reverse('catalog:convert_item_detail', args=(product.id,)),
     )
 
     assert response.status_code == HTTPStatus.OK
 
 
-@given(catalog_id=NegativeNumbers)
+@pytest.mark.django_db()
+@given(product_id=NegativeNumbers)
 def test_false_statement_converter_item_detail(
     client: Client,
-    catalog_id: str,
+    product_id: str,
 ):
     """This test ensures that converter does not work."""
     response = client.get(
-        '/catalog/converter/{catalog_id}/'.format(catalog_id=catalog_id),
+        '/catalog/converter/{product_id}/'.format(product_id=product_id),
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND
