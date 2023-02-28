@@ -125,6 +125,10 @@ TIME_ZONE = 'UTC'
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = components.BASE_DIR.joinpath('staticfiles')
+STATICFILES_DIRS = (
+    components.BASE_DIR.joinpath('static'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
