@@ -22,6 +22,7 @@ class TestTagModel(django.TestCase):
         assert instance.id > 0
         assert len(instance.name) <= 150
         assert isinstance(instance.is_published, bool)
+        assert len(str(instance))
 
     @given(django.from_model(
         CatalogTag,

@@ -29,6 +29,7 @@ class TestItemModel(django.TestCase):
         assert isinstance(instance.is_published, bool)
         assert instance.images
         assert len(str(instance.images[0]))
+        assert len(str(instance))
 
     @given(
         django.from_model(
