@@ -60,5 +60,5 @@ if settings.DEBUG:  # pragma: no cover
         *urlpatterns,
         # Serving media files in development only:
         *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-        *staticfiles_urlpatterns()
+        *staticfiles_urlpatterns(),
     ]
