@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block content %}
+<div>
+    <p></p>
+    <div class="row g-2">
+        <div class="col-sm-6 col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Название</td>
+                    <td>Описание</td>
+                    <td>Изображение</td>
+{#                    <td>Цена</td>#}
+                </tr>
+                </thead>
+                <tbody>
+                  {% for product in product_page %}
+                    <tr>
+                      <td>{{ product.id }}</td>
+                      <td>{{ product.name }}</td>
+                      <td>{{ product.text }}</td>
+                      <td>
+                        {% thumbnail product.main_image "300x300" as image %}
+                          <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
+                        {% endthumbnail %}
+                      </td>
+                      <td>
+                        <button class="btn">
+                          <a class="btn btn-primary" href={% url 'catalog:item_detail' item_id=product.id %}>Подробнее</a>
+                        </button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+
+            <p></p>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% for page in product_page.paginator.page_range %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                      </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock content %}
