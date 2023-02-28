@@ -1,6 +1,7 @@
 from django.contrib import admin
 from sorl.thumbnail.admin import AdminImageMixin, AdminInlineImageMixin
 
+from server.apps.catalog import forms
 from server.apps.catalog.models import (
     CatalogCategory,
     CatalogItem,
@@ -48,6 +49,7 @@ class AdminModelItem(AdminImageMixin, admin.ModelAdmin[CatalogItem]):
     list_display_links = (CatalogItemNameField,)
     filter_horizontal = (CatalogItemTagsField,)
     inlines = (InlineGalleryAdmin,)
+    form = forms.CatalogItemAdminForm
 
 
 @admin.register(CatalogTag)
