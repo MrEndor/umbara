@@ -212,8 +212,6 @@ fabric.properties
 #####=== Custom ===#####
 # Directories:
 /media/*
-!/media/catalog_images/The_Art_of_Dishonored_2-000_g6ssW8G.jpg
-!/media/images/The_Art_of_Dishonored_2-*.jpg
 
 # File types:
 *.sqlite3
