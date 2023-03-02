@@ -50,7 +50,12 @@ it with the `.env.template` file in the same directory
 poetry run python manage.py migrate
 ```
 
-6) Start django server
+6) Collect all statics in staticfiles
+```shell
+poetry run python manage.py collectstatic --noinput
+```
+
+7) Start django server
 ```shell
 poetry run python manage.py runserver
 ```
