@@ -47,8 +47,13 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # sorl-thumbnail
     'sorl.thumbnail',
 
+<<<<<<< HEAD
     # bootstrap5
     'bootstrap5',
+=======
+    # ckeditor
+    'ckeditor',
+>>>>>>> 157408e (feat(bootstrap5): замена удалённой зависимостью локальной)
 
     # Security:
     'axes',
@@ -224,8 +229,36 @@ EMAIL_TIMEOUT = 5
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
+<<<<<<< HEAD
 BOOTSTRAP5 = {
     'error_css_class': 'bootstrap5-error',
     'required_css_class': 'bootstrap5-required',
     'javascript_in_head': True,
 }
+=======
+# Ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            [
+                'NumberedList',
+                'BulletedList',
+                '-',
+                'Outdent',
+                'Indent',
+                '-',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock',
+            ],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+        ],
+    },
+}
+
+CKEDITOR_UPLOAD_PATH = MEDIA_ROOT / 'uploads'
+>>>>>>> 157408e (feat(bootstrap5): замена удалённой зависимостью локальной)
