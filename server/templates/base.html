@@ -1,7 +1,4 @@
 {% load static %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +7,10 @@
   <title>Umbara market</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  {% block bootstrap5 %}
+    <link href="{% static 'bootstrap5/js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.min.css' %}">
+  {% endblock bootstrap5 %}
   {% block links %}
   {% endblock links %}
   <script>
