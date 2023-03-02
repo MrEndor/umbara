@@ -47,9 +47,6 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # sorl-thumbnail
     'sorl.thumbnail',
 
-    # bootstrap5
-    'bootstrap5',
-
     # ckeditor
     'ckeditor',
 
@@ -226,12 +223,6 @@ EMAIL_TIMEOUT = 5
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-
-BOOTSTRAP5 = {
-    'error_css_class': 'bootstrap5-error',
-    'required_css_class': 'bootstrap5-required',
-    'javascript_in_head': True,
-}
 
 # Ckeditor
 CKEDITOR_CONFIGS = {
