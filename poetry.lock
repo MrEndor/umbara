@@ -931,14 +931,14 @@ files = [
 
 [[package]]
 name = "eradicate"
-version = "2.1.0"
+version = "2.2.0"
 description = "Removes commented-out code."
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "eradicate-2.1.0-py3-none-any.whl", hash = "sha256:8bfaca181db9227dc88bdbce4d051a9627604c2243e7d85324f6d6ce0fd08bb2"},
-    {file = "eradicate-2.1.0.tar.gz", hash = "sha256:aac7384ab25b1bf21c4c012de9b4bf8398945a14c98c911545b2ea50ab558014"},
+    {file = "eradicate-2.2.0-py3-none-any.whl", hash = "sha256:751813c315a48ce7e3d0483410991015342d380a956e86e0265c61bfb875bcbc"},
+    {file = "eradicate-2.2.0.tar.gz", hash = "sha256:c329a05def6a4b558dab58bb1b694f5209706b7c99ba174d226dfdb69a5ba0da"},
 ]
 
 [[package]]
@@ -1996,14 +1996,14 @@ pytest = ">=5.0.0"
 
 [[package]]
 name = "python-decouple"
-version = "3.7"
+version = "3.8"
 description = "Strict separation of settings from code."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "python-decouple-3.7.tar.gz", hash = "sha256:e88a8d6bdf3b07d471a854099e455e20a6fa7a4d6ecf8631b250e3db654336e6"},
-    {file = "python_decouple-3.7-py3-none-any.whl", hash = "sha256:1596dad2670cca5b1f87d087d9adb6a1958c590df346b85d4b19a9d6f0d52cef"},
+    {file = "python-decouple-3.8.tar.gz", hash = "sha256:ba6e2657d4f376ecc46f77a3a615e058d93ba5e465c01bbe57289bfb7cce680f"},
+    {file = "python_decouple-3.8-py3-none-any.whl", hash = "sha256:d0d45340815b25f4de59c974b855bb38d03151d81b037d9e3f463b0c9f8cbd66"},
 ]
 
 [[package]]
@@ -2516,4 +2516,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "7634c1a47bdbaf3bc452ae1de8e745574541b7346a3e645f847902173a07c5ab"
+content-hash = "184f2c8843d74d121227f80ab031f4dbe044ba77c4105e3ee21f2a0bbf0ed297"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 23:18+0300\n"
+"POT-Creation-Date: 2023-03-03 11:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,21 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:116
+#: .\server\templates\nav.html:15
+msgid "Home"
+msgstr "На главную"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:119
+#: .\server\templates\nav.html:18
+msgid "About project"
+msgstr "О проекте"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:122
+#: .\server\templates\nav.html:21
+msgid "List of products"
+msgstr "Список товаров"
 
 #: .\server\apps\catalog\models\category.py:10
 #, python-brace-format
@@ -37,7 +52,7 @@ msgstr "Категория"
 msgid "Categories"
 msgstr "Категории"
 
-#: .\server\apps\catalog\models\item.py:16
+#: .\server\apps\catalog\models\item.py:14
 #, python-brace-format
 msgid ""
 "The description should be more than 2x words and contain the words "
@@ -45,38 +60,34 @@ msgid ""
 msgstr ""
 "Описание должно быть больше чем из 2x слов и содержать слова \"{words}\""
 
-#: .\server\apps\catalog\models\item.py:24
-#: .\server\apps\catalog\models\item.py:74
-msgid "image"
-msgstr "изображение"
-
-#: .\server\apps\catalog\models\item.py:43
+#: .\server\apps\catalog\models\item.py:30
+#: .\server\templates\catalog\products.html:17
 msgid "Image"
 msgstr "Изображение"
 
-#: .\server\apps\catalog\models\item.py:44
+#: .\server\apps\catalog\models\item.py:31
 msgid "Images"
 msgstr "Изображении"
 
-#: .\server\apps\catalog\models\item.py:56
+#: .\server\apps\catalog\models\item.py:48
 msgid "description"
 msgstr "описание"
 
-#: .\server\apps\catalog\models\item.py:64
+#: .\server\apps\catalog\models\item.py:56
 msgid "tags"
 msgstr "теги"
 
-#: .\server\apps\catalog\models\item.py:70
+#: .\server\apps\catalog\models\item.py:62
 #, fuzzy
 #| msgid "Categories"
 msgid "categories"
 msgstr "Категории"
 
-#: .\server\apps\catalog\models\item.py:84
+#: .\server\apps\catalog\models\item.py:72
 msgid "Product"
 msgstr "Продукт"
 
-#: .\server\apps\catalog\models\item.py:85
+#: .\server\apps\catalog\models\item.py:73
 msgid "Products"
 msgstr "Продукты"
 
@@ -103,30 +114,43 @@ msgstr "Максимальная длина {maximum}"
 msgid "published"
 msgstr "опубликовано"
 
-#: .\server\apps\core\models\base.py:56
+#: .\server\apps\core\models\base.py:60
 msgid "normalized name"
 msgstr "нормализованное имя"
 
-#: .\server\apps\core\models\base.py:71
+#: .\server\apps\core\models\base.py:75
 msgid "Name is already exists"
 msgstr "Название уже существует"
 
-#: .\server\settings\components\common.py:122
+#: .\server\apps\core\models\sorl.py:23
+msgid "image"
+msgstr "изображение"
+
+#: .\server\settings\components\common.py:119
 msgid "English"
 msgstr "Анлгийский"
 
-#: .\server\settings\components\common.py:123
+#: .\server\settings\components\common.py:120
 msgid "Russian"
 msgstr "Русский"
 
-#: .\server\templates\homepage\header.html:16
-msgid "Home"
-msgstr "На главную"
+#: .\server\templates\about\index.html:8
+msgid ""
+"The project is a marketplace, it sells different goods, from books to food."
+msgstr ""
+"Проект представляет собой маркетплейс, в нем продаются разные товары, от "
+"книг до продуктов питания."
 
-#: .\server\templates\homepage\header.html:19
-msgid "About project"
-msgstr "О проекте"
+#: .\server\templates\catalog\products.html:14
+msgid "ID"
+msgstr "ID"
 
-#: .\server\templates\homepage\header.html:22
-msgid "List of products"
-msgstr "Список товаров"
+#: .\server\templates\catalog\products.html:15
+msgid "Name"
+msgstr "Название"
+
+#: .\server\templates\catalog\products.html:16
+#, fuzzy
+#| msgid "description"
+msgid "Description"
+msgstr "описание"

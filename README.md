@@ -55,7 +55,12 @@ poetry run python manage.py migrate
 poetry run python manage.py collectstatic --noinput
 ```
 
-7) Start django server
+7) Compile localization files
+```shell
+poetry run python manage.py compilemessages
+```
+
+8) Start django server
 ```shell
 poetry run python manage.py runserver
 ```
