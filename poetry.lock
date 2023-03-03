@@ -2482,6 +2482,21 @@ pygments = ">=2.4,<3.0"
 typing_extensions = ">=4.0,<5.0"
 
 [[package]]
+name = "whitenoise"
+version = "6.4.0"
+description = "Radically simplified static file serving for WSGI applications"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "whitenoise-6.4.0-py3-none-any.whl", hash = "sha256:599dc6ca57e48929dfeffb2e8e187879bfe2aed0d49ca419577005b7f2cc930b"},
+    {file = "whitenoise-6.4.0.tar.gz", hash = "sha256:a02d6660ad161ff17e3042653c8e3f5ecbb2a2481a006bde125b9efb9a30113a"},
+]
+
+[package.extras]
+brotli = ["Brotli"]
+
+[[package]]
 name = "win32-setctime"
 version = "1.1.0"
 description = "A small Python utility to set file creation time on Windows"
@@ -2516,4 +2531,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "184f2c8843d74d121227f80ab031f4dbe044ba77c4105e3ee21f2a0bbf0ed297"
+content-hash = "9028a6da153cd8ecc19d7a775cb2fe6cb2b44f80ae74b0a409e7e873341b5bf7"
