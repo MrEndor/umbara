@@ -1,3 +1,5 @@
+from ckeditor import fields
+from ckeditor.widgets import CKEditorWidget
 from django import forms
 
 from server.apps.catalog.models import CatalogItem, ImageItem
@@ -6,6 +8,8 @@ from server.apps.core.widgets import AdminImageWidget
 
 class CatalogItemAdminForm(forms.ModelForm[CatalogItem]):
     """CatalogItem photo display form."""
+
+    text = fields.RichTextFormField(widget=CKEditorWidget())
 
     class Meta:
         fields = '__all__'

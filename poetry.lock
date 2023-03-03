@@ -572,6 +572,22 @@ django-ipware = ">=3"
 setuptools = "*"
 
 [[package]]
+name = "django-ckeditor"
+version = "6.5.1"
+description = "Django admin CKEditor integration."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-ckeditor-6.5.1.tar.gz", hash = "sha256:57cd8fb7cd150adca354cd4e5c35a743fadaab7073f957d2b7167f0d9fe1fcaf"},
+    {file = "django_ckeditor-6.5.1-py3-none-any.whl", hash = "sha256:1321f24df392f30698513930ce5c9f6d899f9bd0ef734c3b64fe936d809e11b3"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=2.0"
+
+[[package]]
 name = "django-cleanup"
 version = "7.0.0"
 description = "Deletes old files."
@@ -695,6 +711,24 @@ files = [
     {file = "django-ipware-4.0.2.tar.gz", hash = "sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05"},
     {file = "django_ipware-4.0.2-py2.py3-none-any.whl", hash = "sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9"},
 ]
+
+[[package]]
+name = "django-js-asset"
+version = "2.0.0"
+description = "script tag with additional attributes for django.forms.Media"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django_js_asset-2.0.0-py3-none-any.whl", hash = "sha256:86f9f300d682537ddaf0487dc2ab356581b8f50c069bdba91d334a46e449f923"},
+    {file = "django_js_asset-2.0.0.tar.gz", hash = "sha256:adc1ee1efa853fad42054b540c02205344bb406c9bddf87c9e5377a41b7db90f"},
+]
+
+[package.dependencies]
+Django = ">=2.2"
+
+[package.extras]
+tests = ["coverage"]
 
 [[package]]
 name = "django-migration-linter"
@@ -2497,4 +2531,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "6f059cc0e8da0234ea8e95b458e0517c72fcc0a59ae1735dfddd4432c17f32ef"
+content-hash = "9028a6da153cd8ecc19d7a775cb2fe6cb2b44f80ae74b0a409e7e873341b5bf7"

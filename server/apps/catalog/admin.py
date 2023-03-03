@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from server.apps.catalog.forms import CatalogItemAdminForm, ImageItemAdminForm
+from server.apps.catalog import forms
 from server.apps.catalog.models import (
     CatalogCategory,
     CatalogItem,
@@ -33,7 +33,7 @@ class InlineGalleryAdmin(
 
     model = ImageItem
     extra = 1
-    form = ImageItemAdminForm
+    form = forms.ImageItemAdminForm
 
 
 @admin.register(CatalogItem)
@@ -49,7 +49,7 @@ class AdminModelItem(admin.ModelAdmin[CatalogItem]):
     list_display_links = (CatalogItemNameField,)
     filter_horizontal = (CatalogItemTagsField,)
     inlines = (InlineGalleryAdmin,)
-    form = CatalogItemAdminForm
+    form = forms.CatalogItemAdminForm
 
 
 @admin.register(CatalogTag)

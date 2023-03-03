@@ -21,7 +21,9 @@
     </div>
       <h1 class="u-align-center u-text u-text-1">{{ product.name }}</h1>
       <h3 class="u-text u-text-3">Описание:</h3>
-        <p class="u-product-control u-product-desc u-text u-text-5"> {{ product.text|linebreaksbr }}</p>
+      <div class="u-product-control u-product-desc u-text u-text-5">
+        {{ product.text|safe }}
+      </div>
       <h3 class="u-text u-text-3">Категория: {{ product.category.name }}</h3>
       {% if product.tags %}
         <h3 class="u-align-center u-text u-text-2">Теги:</h3>

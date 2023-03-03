@@ -47,6 +47,9 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # sorl-thumbnail
     'sorl.thumbnail',
 
+    # ckeditor
+    'ckeditor',
+
     # Security:
     'axes',
 
@@ -221,3 +224,30 @@ EMAIL_TIMEOUT = 5
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
+# Ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            [
+                'NumberedList',
+                'BulletedList',
+                '-',
+                'Outdent',
+                'Indent',
+                '-',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock',
+            ],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+        ],
+    },
+}
+
+CKEDITOR_UPLOAD_PATH = MEDIA_ROOT / 'uploads'

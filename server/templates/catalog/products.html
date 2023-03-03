@@ -23,7 +23,7 @@
                     <tr>
                       <td>{{ product.id }}</td>
                       <td>{{ product.name }}</td>
-                      <td>{{ product.text }}</td>
+                      <td>{{ product.text|safe }}</td>
                       <td>
                         {% thumbnail product.image "300x300" as image %}
                           <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
