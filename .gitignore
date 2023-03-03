@@ -212,6 +212,7 @@ fabric.properties
 #####=== Custom ===#####
 # Directories:
 /media/*
+/staticfiles/*
 
 # File types:
 *.sqlite3
@@ -248,3 +249,6 @@ artifacts/
 
 # hypothesis
 .hypothesis/
+
+# db for rivewer
+!reviewer.sqlite3

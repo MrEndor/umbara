@@ -10,10 +10,8 @@ import hypothesis
 import pytest
 
 pytest_plugins = [
-    'fixtures.apps.about',
-    'fixtures.apps.catalog',
-    'fixtures.apps.homepage',
-    'fixtures.apps.endpoints',
+    'tests.fixtures.apps.catalog',
+    'tests.fixtures.apps.endpoints',
 ]
 
 hypothesis.settings.register_profile(

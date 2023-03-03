@@ -4,7 +4,7 @@ from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 from server.apps.catalog import constants
-from server.apps.core.base_models import NormalizedName, Slugable
+from server.apps.core.models import NormalizedName, Slugable
 
 WEIGHT_HELP_TEXT = _(
     'Weight must be greater than {minimum} and less than {maximum}',

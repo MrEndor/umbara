@@ -1,0 +1,34 @@
+{% load static %}
+
+{% block footer %}
+<footer class="container-fluid" id="footer" style="bottom: 0;width: 100%;">
+      <p>
+         &copy;
+         <span id="copyright">
+           <script>
+             const serverTime = new Date("{% now "c" %}")
+             const clientTime = new Date()
+
+             diffrance = (clientTime - serverTime) / 1000 / 3600
+
+             let copyrightTime;
+             if (diffrance > 24) {
+                copyrightTime = serverTime
+             } else {
+               copyrightTime = clientTime
+             }
+
+             document
+               .getElementById('copyright')
+               .appendChild(document.createTextNode(copyrightTime.getFullYear()))
+           </script>
+           <noscript>
+             {% now 'Y' %}
+           </noscript>
+         </span>
+         ,
+         Umbara Project <br>
+         All rights reserved
+      </p>
+</footer>
+{% endblock footer %}
