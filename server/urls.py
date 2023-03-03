@@ -10,6 +10,7 @@ files serving technique in development.
 """
 
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.admindocs import urls as admindocs_urls
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -48,17 +49,15 @@ urlpatterns = [
         template_name='txt/humans.txt',
         content_type='text/plain',
     )),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+    *staticfiles_urlpatterns(),
 ]
 
 if settings.DEBUG:  # pragma: no cover
     import debug_toolbar  # noqa: WPS433
-    from django.conf.urls.static import static  # noqa: WPS433
 
     urlpatterns = [
         # URLs specific only to django-debug-toolbar:
         path('__debug__/', include(debug_toolbar.urls)),
         *urlpatterns,
-        # Serving media files in development only:
-        *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-        *staticfiles_urlpatterns(),
     ]

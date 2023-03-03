@@ -68,6 +68,8 @@ MIDDLEWARE: Tuple[str, ...] = (
 
     # Django:
     'django.middleware.security.SecurityMiddleware',
+    # whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # django-permissions-policy
     'django_permissions_policy.PermissionsPolicyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
