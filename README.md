@@ -50,7 +50,17 @@ it with the `.env.template` file in the same directory
 poetry run python manage.py migrate
 ```
 
-6) Start django server
+6) Collect all statics in staticfiles
+```shell
+poetry run python manage.py collectstatic --noinput
+```
+
+7) Compile localization files
+```shell
+poetry run python manage.py compilemessages
+```
+
+8) Start django server
 ```shell
 poetry run python manage.py runserver
 ```
@@ -76,4 +86,9 @@ poetry run mypy tests
 Running linter flake8
 ```shell
 poetry run flake8 .
+```
+
+Compiling localization
+```shell
+poetry run python manage.py compilemessages
 ```

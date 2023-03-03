@@ -12,8 +12,10 @@ files serving technique in development.
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admindocs import urls as admindocs_urls
-from django.urls import include, path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.urls import include, path, re_path
 from django.views.generic import TemplateView
+from django.views.static import serve
 from health_check import urls as health_urls
 
 from server.apps.about import urls as about_urls
@@ -25,11 +27,11 @@ admin.autodiscover()
 
 urlpatterns = [
     # Apps:
-    path('/', include(homepage_urls, namespace='homepage')),
+    path('', include(homepage_urls, namespace='homepage')),
     path('about/', include(about_urls, namespace='about')),
     path('catalog/', include(catalog_urls, namespace='catalog')),
 
-    path('/coffee', coffee, name='coffee'),
+    path('coffee/', coffee, name='coffee'),
 
     # Health checks:
     path('health/', include(health_urls)),
@@ -47,16 +49,17 @@ urlpatterns = [
         template_name='txt/humans.txt',
         content_type='text/plain',
     )),
+    re_path(r'^media/(?P<path>.*)$', serve, {  # noqa: WPS360
+        'document_root': settings.MEDIA_ROOT,
+    }),
+    *staticfiles_urlpatterns(),
 ]
 
 if settings.DEBUG:  # pragma: no cover
     import debug_toolbar  # noqa: WPS433
-    from django.conf.urls.static import static  # noqa: WPS433
 
     urlpatterns = [
         # URLs specific only to django-debug-toolbar:
         path('__debug__/', include(debug_toolbar.urls)),
         *urlpatterns,
-        # Serving media files in development only:
-        *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
     ]
