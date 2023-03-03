@@ -1,15 +1,15 @@
 {% load static %}
 
 {% block footer %}
-<footer class="container-fluid" id="footer">
+<footer class="container-fluid" id="footer" style="bottom: 0;width: 100%;">
       <p>
          &copy;
          <span id="copyright">
            <script>
-             let serverTime = Date.parse("{% now "c" %}")
-             let clientTime = Date.now()
+             const serverTime = new Date("{% now "c" %}")
+             const clientTime = new Date()
 
-             diffrance = (serverTime - clientTime) / 1000 / 3600
+             diffrance = (clientTime - serverTime) / 1000 / 3600
 
              let copyrightTime;
              if (diffrance > 24) {
