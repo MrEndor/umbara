@@ -16,3 +16,5 @@ REPLACEMENT_TABLE: Final[Dict[str, str]] = {  # noqa: WPS317
     'o': 'о', 'k': 'к', 'n': 'н',
     'g': 'г', 't': 'т', 'l': 'л', 'i': 'и',
 } | {symbol: '' for symbol in _symbols}
+
+DEFAULT_GEOMETRY_STRING = '300x300'
