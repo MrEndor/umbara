@@ -1,6 +1,6 @@
 from django.contrib import admin
-from sorl.thumbnail.admin import AdminImageMixin, AdminInlineImageMixin
 
+from server.apps.catalog.forms import CatalogItemAdminForm, ImageItemAdminForm
 from server.apps.catalog.models import (
     CatalogCategory,
     CatalogItem,
@@ -27,27 +27,29 @@ admin.site.register(ImageItem)
 
 
 class InlineGalleryAdmin(
-    AdminInlineImageMixin,
     admin.TabularInline[ImageItem, CatalogItem],
 ):
     """Views for gallery model."""
 
     model = ImageItem
     extra = 1
+    form = ImageItemAdminForm
 
 
 @admin.register(CatalogItem)
-class AdminModelItem(AdminImageMixin, admin.ModelAdmin[CatalogItem]):
+class AdminModelItem(admin.ModelAdmin[CatalogItem]):
     """Views for item model."""
 
     list_display = (
         CatalogItemNameField,
         CatalogItemPublishedField,
+        CatalogItem.view_image,
     )
     list_editable = (CatalogItemPublishedField,)
     list_display_links = (CatalogItemNameField,)
     filter_horizontal = (CatalogItemTagsField,)
     inlines = (InlineGalleryAdmin,)
+    form = CatalogItemAdminForm
 
 
 @admin.register(CatalogTag)
