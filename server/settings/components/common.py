@@ -50,9 +50,6 @@ INSTALLED_APPS: Tuple[str, ...] = (
     # ckeditor
     'ckeditor',
 
-    # ckeditor
-    'ckeditor',
-
     # Security:
     'axes',
 

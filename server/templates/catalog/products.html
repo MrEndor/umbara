@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load thumbnail %}
+{% load i18n %}
 
 {% block content %}
 <div>
@@ -10,10 +11,10 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Название</td>
-                    <td>Описание</td>
-                    <td>Изображение</td>
+                    <td>{% trans 'ID' %}</td>
+                    <td>{% trans 'Name' %}</td>
+                    <td>{% trans 'Description' %}</td>
+                    <td>{% trans 'Image' %}</td>
 {#                    <td>Цена</td>#}
                 </tr>
                 </thead>
@@ -24,7 +25,7 @@
                       <td>{{ product.name }}</td>
                       <td>{{ product.text|safe }}</td>
                       <td>
-                        {% thumbnail product.main_image "300x300" as image %}
+                        {% thumbnail product.image "300x300" as image %}
                           <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
                         {% endthumbnail %}
                       </td>
