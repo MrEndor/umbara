@@ -43,12 +43,12 @@ def include_images(
     """Function to add images."""
     image = SimpleUploadedFile(
         'cat.jpg',
-        b'some content',
+        b'0' * 1024,
         content_type='image/jpeg',
     )
     image.product = product  # type: ignore[attr-defined]
 
-    product.main_image = image
+    product.image = image
 
     image_item = ImageItem.objects.create(
         image=image,
@@ -105,6 +105,6 @@ base_item_strategy = generate_product_with_dependencies(
         CatalogItem,
         category=base_category_strategy,
         text=item_text_strategies(),
-        main_image=strategies.none(),
+        image=strategies.none(),
     ),
 )
