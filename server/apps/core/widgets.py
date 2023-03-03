@@ -44,7 +44,7 @@ class AdminImageWidget(current.AdminImageWidget):
 
         return mark_safe(output)
 
-    def _assemble_html(self, mini, field, output) -> str:
+    def _assemble_html(self, mini, field, output) -> str:  # pragma: no cover
         try:
             output = TEMPLATE.format(
                 width=mini.width,
