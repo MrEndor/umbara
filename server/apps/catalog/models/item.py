@@ -3,12 +3,11 @@ from functools import cached_property
 from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
-from sorl import thumbnail
 
 from server.apps.catalog import constants
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
-from server.apps.core.models import BaseModel
+from server.apps.core.models import BaseModel, ImageMixin
 from server.apps.core.validators import is_contains
 
 _HELP_TEXT = _(
@@ -17,13 +16,9 @@ _HELP_TEXT = _(
 )
 
 
-class ImageItem(models.Model):
+class ImageItem(ImageMixin, models.Model):
     """Image Item Model."""
 
-    image = thumbnail.ImageField(
-        upload_to='images',
-        verbose_name=_('image'),
-    )
     product = models.ForeignKey(
         'CatalogItem',
         on_delete=models.CASCADE,
@@ -41,6 +36,7 @@ class ImageItem(models.Model):
 
 
 class CatalogItem(
+    ImageMixin,
     BaseModel,
 ):
     """Base Catalog Item Model."""
@@ -64,11 +60,6 @@ class CatalogItem(
         on_delete=models.SET_NULL,
         null=True,
         verbose_name=_('categories'),
-    )
-    main_image = thumbnail.ImageField(
-        upload_to='catalog_images',
-        verbose_name=_('image'),
-        null=True,
     )
 
     @cached_property
