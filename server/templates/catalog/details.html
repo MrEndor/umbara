@@ -12,7 +12,7 @@
 <div class="u-clearfix u-sheet u-valign-middle u-sheet-1 align-items-center">
   <div class="u-expanded-width u-products u-products-1">
     <div class="u-image-1">
-    {% thumbnail product.main_image "500x300" as image %}
+    {% thumbnail product.image "500x300" as image %}
       <img
         class="center-block"
         src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"
