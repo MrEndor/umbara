@@ -1,6 +1,6 @@
+from base64 import b64decode
 from random import choice, randrange
 from typing import List
-from base64 import b64decode
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from hypothesis import strategies
