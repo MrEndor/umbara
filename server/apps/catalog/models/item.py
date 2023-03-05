@@ -1,5 +1,3 @@
-from functools import cached_property
-
 from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
@@ -61,11 +59,14 @@ class CatalogItem(
         null=True,
         verbose_name=_('categories'),
     )
-
-    @cached_property
-    def images(self):
-        """Property for all product pictures."""
-        return ImageItem.objects.filter(product=self.id).all()
+    is_on_main = models.BooleanField(
+        default=False,
+        verbose_name=_('is on main'),
+    )
+    gallery = models.ManyToManyField(
+        ImageItem,
+        verbose_name=_('gallery'),
+    )
 
     class Meta:
         db_table = 'catalog_item'
