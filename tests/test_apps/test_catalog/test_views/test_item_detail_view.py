@@ -22,10 +22,11 @@ def test_ok_item_detail_page(
     """This test ensures that item detail page works."""
     response = client.get(reverse('catalog:item_detail', args=(product.id,)))
 
+    assert 'product' in response.context
     assert response.status_code == HTTPStatus.OK
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db(transaction=True)
 @given(product_id=NegativeNumbers)
 def test_not_found_item_detail_page(
     client: Client,
@@ -37,7 +38,7 @@ def test_not_found_item_detail_page(
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db(transaction=True)
 @given(product_id=strategies.text())
 def test_text_item_detail_page(
     client: Client,
@@ -61,6 +62,7 @@ def test_true_statement_regex_url_item_detail(
         '/catalog/re/{product_id}/'.format(product_id=product.id),
     )
 
+    assert 'product' in response.context
     assert response.status_code == HTTPStatus.OK
 
 
@@ -76,6 +78,7 @@ def test_true_statement_converter_url_item_detail(
         reverse('catalog:convert_item_detail', args=(product.id,)),
     )
 
+    assert 'product' in response.context
     assert response.status_code == HTTPStatus.OK
 
 
@@ -88,6 +91,18 @@ def test_false_statement_converter_item_detail(
     """This test ensures that converter does not work."""
     response = client.get(
         '/catalog/converter/{product_id}/'.format(product_id=product_id),
+    )
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+
+
+@pytest.mark.django_db(transaction=True)
+def test_page_not_found_item_detail(
+    client: Client,
+):
+    """This test ensures that item detail raise 404."""
+    response = client.get(
+        '/catalog/10',
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND

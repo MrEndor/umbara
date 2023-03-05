@@ -1,5 +1,6 @@
 from random import choice, randrange
 from typing import List
+from base64 import b64decode
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from hypothesis import strategies
@@ -12,6 +13,14 @@ from server.apps.catalog.models import (
     CatalogTag,
     ImageItem,
 )
+
+EMPTY_PIXEL = b64decode((
+    'iVBORw0KGgoAAAANSUhEU' +
+    'gAAAAEAAAABCAAAAAA6fp' +
+    'tVAAAACklEQVQYV2P4DwA' +
+    'BAQEAWk1v8QAAAABJRU5Er' +
+    'kJggg=='
+))
 
 
 @strategies.composite
@@ -43,7 +52,7 @@ def include_images(
     """Function to add images."""
     image = SimpleUploadedFile(
         'cat.jpg',
-        b'0' * 1024,
+        EMPTY_PIXEL,
         content_type='image/jpeg',
     )
     image.product = product  # type: ignore[attr-defined]
@@ -55,6 +64,7 @@ def include_images(
         product=product,
     )
     image_item.save()
+    product.gallery.add(image_item)
 
     return product
 
