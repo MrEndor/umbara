@@ -19,7 +19,7 @@ ItemImageField: str = (
     CatalogItem.image.field.name
 )
 ItemDescriptionField: str = (
-    CatalogItem.text.field.name
+    CatalogItem.text.field.name  # type: ignore[attr-defined]
 )
 ItemIsOnMainField: str = (
     CatalogItem.is_on_main.field.name  # type: ignore[attr-defined]
