@@ -3,6 +3,7 @@ from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 from server.apps.catalog import constants
+from server.apps.catalog.logic.queries.item import CatalogItemManager
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
 from server.apps.core.models import BaseModel, ImageMixin
@@ -67,6 +68,8 @@ class CatalogItem(
         ImageItem,
         verbose_name=_('gallery'),
     )
+
+    objects = CatalogItemManager()
 
     class Meta:
         db_table = 'catalog_item'
