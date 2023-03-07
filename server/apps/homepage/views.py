@@ -2,12 +2,12 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from server.apps.catalog.logic.queries import item
+from server.apps.catalog.models import CatalogItem
 
 
 def home(request: HttpRequest) -> HttpResponse:
     """View for project homepage."""
-    products = item.all_on_main()
+    products = CatalogItem.objects.list_products(is_on_main=True)
 
     page_number = request.GET.get('page', default=1)
 

@@ -2,12 +2,12 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from server.apps.catalog.logic.queries import item
+from server.apps.catalog.models import CatalogItem
 
 
 def item_list(request: HttpRequest) -> HttpResponse:
     """View for the item list."""
-    products = item.list_products()
+    products = CatalogItem.objects.list_products()
     page_number = request.GET.get('page', default=1)
 
     paginator = Paginator(products, per_page=5)
@@ -26,7 +26,7 @@ def item_list(request: HttpRequest) -> HttpResponse:
 
 def item_detail(request: HttpRequest, product_id: int) -> HttpResponse:
     """View for the item detail."""
-    product = item.get_detail_by(pk=product_id)
+    product = CatalogItem.objects.get_detail_by(pk=product_id)
 
     if not product:
         raise Http404('No such page exists.')
