@@ -34,7 +34,8 @@ class ImageItem(ImageMixin, models.Model):
         return str(self.image)
 
 
-class CatalogItem(
+# false positive
+class CatalogItem(  # type: ignore[misc]
     ImageMixin,
     BaseModel,
 ):
@@ -67,6 +68,12 @@ class CatalogItem(
     gallery = models.ManyToManyField(
         ImageItem,
         verbose_name=_('gallery'),
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
     )
 
     objects = CatalogItemManager()
