@@ -24,7 +24,7 @@ def test_item_list_page(
 
     assert page_key in response.context
 
-    product_page = response.context['product_page']
+    product_page = response.context[page_key]
     assert product_page
     assert response.status_code == HTTPStatus.OK
 
