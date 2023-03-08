@@ -16,42 +16,40 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:116
 #: .\server\templates\nav.html:18
 msgid "Home"
-msgstr "На главную"
+msgstr "Home"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:119
 #: .\server\templates\nav.html:25
 msgid "About project"
-msgstr "О проекте"
+msgstr "About project"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:122
 #: .\server\templates\nav.html:32
 msgid "List of products"
-msgstr "Список товаров"
+msgstr "List of products"
 
 #: .\server\apps\catalog\models\category.py:10
 #, python-brace-format
 msgid "Weight must be greater than {minimum} and less than {maximum}"
-msgstr "Вес должен быть больше {minimum} и меньше {maximum}"
+msgstr "Weight must be greater than {minimum} and less than {maximum}"
 
 #: .\server\apps\catalog\models\category.py:26
 msgid "weight"
-msgstr "вес"
+msgstr "weight"
 
 #: .\server\apps\catalog\models\category.py:36
 #: .\server\templates\catalog\table_products.html:9
 msgid "Category"
-msgstr "Категория"
+msgstr "Category"
 
 #: .\server\apps\catalog\models\category.py:37
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
 #: .\server\apps\catalog\models\item.py:18
 #, python-brace-format
@@ -59,133 +57,116 @@ msgid ""
 "The description should be more than 2x words and contain the words "
 "\"{words}\""
 msgstr ""
-"Описание должно быть больше чем из 2x слов и содержать слова \"{words}\""
+"The description should be more than 2x words and contain the words "
+"\"{words}\""
 
 #: .\server\apps\catalog\models\item.py:34
 #: .\server\templates\catalog\table_products.html:12
 msgid "Image"
-msgstr "Изображение"
+msgstr "Image"
 
 #: .\server\apps\catalog\models\item.py:35
 msgid "Images"
-msgstr "Изображении"
+msgstr "Images"
 
 #: .\server\apps\catalog\models\item.py:52
 msgid "description"
-msgstr "описание"
+msgstr "description"
 
 #: .\server\apps\catalog\models\item.py:60
 msgid "tags"
-msgstr "теги"
+msgstr "tags"
 
 #: .\server\apps\catalog\models\item.py:66
-#, fuzzy
-#| msgid "Categories"
 msgid "categories"
-msgstr "категории"
+msgstr "categories"
 
 #: .\server\apps\catalog\models\item.py:70
 msgid "is on main"
-msgstr "находится на главной"
+msgstr "is on main"
 
 #: .\server\apps\catalog\models\item.py:74
 msgid "gallery"
-msgstr "галерея"
+msgstr "gallery"
 
 #: .\server\apps\catalog\models\item.py:79
 msgid "Product"
-msgstr "Продукт"
+msgstr "Product"
 
 #: .\server\apps\catalog\models\item.py:80
 msgid "Products"
-msgstr "Продукты"
+msgstr "Products"
 
 #: .\server\apps\catalog\models\tag.py:13
 msgid "Tag"
-msgstr "Тег"
+msgstr "Tag"
 
 #: .\server\apps\catalog\models\tag.py:14
 #: .\server\templates\catalog\table_products.html:11
 msgid "Tags"
-msgstr "Теги"
+msgstr "Tags"
 
 #: .\server\apps\core\models\base.py:16
 msgid "name"
-msgstr "название"
+msgstr "name"
 
 #: .\server\apps\core\models\base.py:18
 #, python-brace-format
 msgid "Maximum length {maximum}"
-msgstr "Максимальная длина {maximum}"
+msgstr "Maximum length {maximum}"
 
 #: .\server\apps\core\models\base.py:24
-#, fuzzy
-#| msgid "published"
 msgid "published"
-msgstr "опубликовано"
+msgstr "published"
 
 #: .\server\apps\core\models\base.py:60
 msgid "normalized name"
-msgstr "нормализованное имя"
+msgstr "normalized name"
 
 #: .\server\apps\core\models\base.py:75
 msgid "Name is already exists"
-msgstr "Название уже существует"
+msgstr "Name is already exists"
 
 #: .\server\apps\core\models\sorl.py:23
 msgid "image"
-msgstr "изображение"
+msgstr "image"
 
 #: .\server\settings\components\common.py:124
 msgid "English"
-msgstr "Анлгийский"
+msgstr "English"
 
 #: .\server\settings\components\common.py:125
 msgid "Russian"
-msgstr "Русский"
+msgstr "Russian"
 
 #: .\server\templates\404.html:8
 msgid "opps"
-msgstr "Уппс!"
+msgstr "Opps!"
 
 #: .\server\templates\404.html:8
 msgid "not_found_header"
-msgstr "Страница не найдена."
+msgstr "Page not found."
 
 #: .\server\templates\404.html:13
 msgid "not_found_text"
-msgstr "Страница, которую вы ищете, не существует."
+msgstr "The page you’re looking for doesn’t exist."
 
 #: .\server\templates\about\index.html:8
 msgid "project_about"
-msgstr ""
-"Проект представляет собой маркетплейс, в нем продаются разные товары, от "
-"книг до продуктов питания."
+msgstr "The project is a marketplace, it sells different goods, from books to food."
 
 #: .\server\templates\catalog\table_products.html:8
 msgid "Name"
-msgstr "Название"
+msgstr "Name"
 
 #: .\server\templates\catalog\table_products.html:10
-#, fuzzy
-#| msgid "description"
 msgid "Description"
-msgstr "Описание"
+msgstr "Description"
 
 #: .\server\templates\catalog\table_products.html:37
 msgid "Detail"
-msgstr "Подробнее"
+msgstr "Detail"
 
 #: .\server\templates\nav.html:36
 msgid "Admin panel"
-msgstr "Панель администратора"
-
-#~ msgid ""
-#~ "The project is a marketplace, it sells different goods, from books to "
-#~ "food."
-#~ msgstr ""
-#~ "Проект представляет собой маркетплейс, в нем продаются разные товары, от "
-#~ "книг до продуктов питания."
-
-#~ msgid "ID"
-#~ msgstr "ID"
+msgstr "Admin panel"

@@ -1,10 +1,9 @@
-from functools import cached_property
-
 from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 from server.apps.catalog import constants
+from server.apps.catalog.logic.queries.item import CatalogItemManager
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
 from server.apps.core.models import BaseModel, ImageMixin
@@ -61,11 +60,16 @@ class CatalogItem(
         null=True,
         verbose_name=_('categories'),
     )
+    is_on_main = models.BooleanField(
+        default=False,
+        verbose_name=_('is on main'),
+    )
+    gallery = models.ManyToManyField(
+        ImageItem,
+        verbose_name=_('gallery'),
+    )
 
-    @cached_property
-    def images(self):
-        """Property for all product pictures."""
-        return ImageItem.objects.filter(product=self.id).all()
+    objects = CatalogItemManager()
 
     class Meta:
         db_table = 'catalog_item'

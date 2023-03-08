@@ -6,21 +6,7 @@ from server.apps.catalog.models import (
     CatalogItem,
     CatalogTag,
     ImageItem,
-)
-
-CatalogItemNameField: str = (
-    CatalogItem.name.field.name  # type: ignore[attr-defined]
-)
-CatalogItemPublishedField: str = (
-    CatalogItem.is_published.field.name  # type: ignore[attr-defined]
-)
-CatalogItemTagsField: str = CatalogItem.tags.field.name
-
-CatalogTagNameField: str = (
-    CatalogTag.name.field.name  # type: ignore[attr-defined]
-)
-CatalogCategoryField: str = (
-    CatalogTag.name.field.name  # type: ignore[attr-defined]
+    fields,
 )
 
 admin.site.register(ImageItem)
@@ -41,14 +27,16 @@ class AdminModelItem(admin.ModelAdmin[CatalogItem]):
     """Views for item model."""
 
     list_display = (
-        CatalogItemNameField,
-        CatalogItemPublishedField,
+        fields.ItemNameField,
+        fields.ItemPublishedField,
+        fields.ItemIsOnMainField,
         CatalogItem.view_image,
     )
-    list_editable = (CatalogItemPublishedField,)
-    list_display_links = (CatalogItemNameField,)
-    filter_horizontal = (CatalogItemTagsField,)
+    list_editable = (fields.ItemPublishedField, fields.ItemIsOnMainField)
+    list_display_links = (fields.ItemNameField,)
+    filter_horizontal = (fields.ItemTagsField,)
     inlines = (InlineGalleryAdmin,)
+    exclude = (fields.ItemGalleyField,)
     form = forms.CatalogItemAdminForm
 
 
@@ -56,13 +44,13 @@ class AdminModelItem(admin.ModelAdmin[CatalogItem]):
 class AdminModelTag(admin.ModelAdmin[CatalogTag]):
     """Views for tag model."""
 
-    list_display = (CatalogTagNameField,)
-    list_display_links = (CatalogTagNameField,)
+    list_display = (fields.TagNameField,)
+    list_display_links = (fields.TagNameField,)
 
 
 @admin.register(CatalogCategory)
 class AdminModelCategory(admin.ModelAdmin[CatalogCategory]):
     """Views for category model."""
 
-    list_display = (CatalogCategoryField,)
-    list_display_links = (CatalogCategoryField,)
+    list_display = (fields.CategoryNameField,)
+    list_display_links = (fields.CategoryNameField,)

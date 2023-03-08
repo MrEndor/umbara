@@ -15,7 +15,7 @@
     {% thumbnail product.image "500x300" as image %}
       <img
         class="center-block"
-        src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"
+        src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="Main image"
       >
     {% endthumbnail %}
     </div>
@@ -33,19 +33,16 @@
           {% endfor %}
           </p>
       {% endif %}
-      {% if product.images %}
-        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 u-text-4">
-        {% for image_item in product.images %}
-          {% thumbnail image_item "80x80" as formatted_image %}
-            <img
-              src="{{ formatted_image.url }}" width="{{ formatted_image.width }}" height="{{ formatted_image.height }}"
-              class="shadow-1-strong rounded mb-4"
-            >
-          {% endthumbnail %}
-        {% endfor %}
-        </div>
-      {% endif %}
-    </div>
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 u-text-4">
+      {% for image_item in product.gallery.all %}
+        {% thumbnail image_item.image "80x80" as formatted_image %}
+          <img
+            src="{{ formatted_image.url }}" width="{{ formatted_image.width }}" height="{{ formatted_image.height }}"
+            class="shadow-1-strong rounded mb-4" alt="Gallery image"
+          >
+        {% endthumbnail %}
+      {% endfor %}
+      </div>
   </div>
 </div>
 </section>

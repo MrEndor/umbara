@@ -1,1 +1,15 @@
-{% include 'base.html' %}
+{% extends 'table_products.html' %}
+
+
+{% block content %}
+  {% if product_page %}
+    {{ block.super }}
+  {% else %}
+    <p></p>
+    <div class="row g-2">
+      <div class="col-sm-8 col-md-12">
+        {% include 'cat.html' %}
+      </div>
+    </div>
+  {% endif %}
+{% endblock content %}
