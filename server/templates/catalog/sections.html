@@ -1,0 +1,13 @@
+{% extends 'table_products.html' %}
+
+{% block content %}
+  <div class="text-center">
+    <p1 class="p-2 display-6">{{ section }}</p1>
+  </div>
+
+  {% if product_page %}
+    {{ block.super }}
+  {% else %}
+    {% include 'cat.html' %}
+  {% endif %}
+{% endblock content %}
