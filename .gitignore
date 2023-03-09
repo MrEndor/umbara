@@ -211,7 +211,7 @@ fabric.properties
 
 #####=== Custom ===#####
 # Directories:
-/media/*
+/media/cache/*
 /staticfiles/*
 
 # File types:
