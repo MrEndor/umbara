@@ -9,3 +9,4 @@ CATEGORY_WEIGHT_MIN: Final[int] = 0
 CATEGORY_DEFAULT_WEIGHT: Final[int] = 100
 
 PRODUCT_PAGE: Final[str] = 'product_page'
+FRIDAY: Final[int] = 6
