@@ -3,7 +3,7 @@ from random import choice, randrange
 from typing import List
 
 from django.core.files.uploadedfile import SimpleUploadedFile
-from hypothesis import strategies
+from hypothesis import strategies, assume
 from hypothesis.extra import django
 
 from server.apps.catalog.constants import CATALOG_ITEM_KEYWORDS
@@ -121,11 +121,15 @@ base_category_strategy = django.from_model(
         alphabet=strategies.from_regex(
             '^[а-яА-Яa-zA-Z]$', fullmatch=True,
         ),
-        min_size=10,
+        min_size=100,
         max_size=150,
     ),
-    slug=strategies.from_regex(
-        '^[0-9-_a-zA-Z]+$', fullmatch=True,
+    slug=strategies.text(
+        alphabet=strategies.from_regex(
+            '^[0-9-_a-zA-Z]$', fullmatch=True,
+        ),
+        min_size=100,
+        max_size=200,
     ),
 )
 
