@@ -3,7 +3,7 @@ from random import choice, randrange
 from typing import List
 
 from django.core.files.uploadedfile import SimpleUploadedFile
-from hypothesis import strategies, assume
+from hypothesis import strategies
 from hypothesis.extra import django
 
 from server.apps.catalog.constants import CATALOG_ITEM_KEYWORDS
@@ -48,12 +48,12 @@ def include_tags(
 
 def include_images(
     product: CatalogItem,
-    image: bytes,
+    image_content: bytes,
 ):
     """Function to add images."""
     image = SimpleUploadedFile(
         'cat.jpg',
-        image,
+        content=image_content,
         content_type='image/jpeg',
     )
     image.product = product  # type: ignore[attr-defined]
