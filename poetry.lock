@@ -1479,6 +1479,23 @@ files = [
 ]
 
 [[package]]
+name = "mock"
+version = "5.0.1"
+description = "Rolling backport of unittest.mock for all Pythons"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mock-5.0.1-py3-none-any.whl", hash = "sha256:c41cfb1e99ba5d341fbcc5308836e7d7c9786d302f995b2c271ce2144dece9eb"},
+    {file = "mock-5.0.1.tar.gz", hash = "sha256:e3ea505c03babf7977fd21674a69ad328053d414f05e6433c30d8fa14a534a6b"},
+]
+
+[package.extras]
+build = ["blurb", "twine", "wheel"]
+docs = ["sphinx"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "more-itertools"
 version = "9.1.0"
 description = "More routines for operating on iterables, beyond itertools"
@@ -2530,4 +2547,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "f30e2d19717f1f9416611d288ddd1e0e20a7f0ecee2383eba37d9f36cb31492a"
+content-hash = "f34406ff897b2dfd73a84586189da7b9e51b38b89d8ce5c52786f3b203d8f701"
