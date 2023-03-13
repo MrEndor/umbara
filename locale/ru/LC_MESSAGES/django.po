@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 17:15+0300\n"
+"POT-Creation-Date: 2023-03-09 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid "weight"
 msgstr "вес"
 
 #: .\server\apps\catalog\models\category.py:36
-#: .\server\templates\catalog\table_products.html:9
+#: .\server\templates\table_products.html:16
 msgid "Category"
 msgstr "Категория"
 
@@ -53,7 +53,7 @@ msgstr "Категория"
 msgid "Categories"
 msgstr "Категории"
 
-#: .\server\apps\catalog\models\item.py:18
+#: .\server\apps\catalog\models\item.py:13
 #, python-brace-format
 msgid ""
 "The description should be more than 2x words and contain the words "
@@ -61,42 +61,43 @@ msgid ""
 msgstr ""
 "Описание должно быть больше чем из 2x слов и содержать слова \"{words}\""
 
-#: .\server\apps\catalog\models\item.py:34
-#: .\server\templates\catalog\table_products.html:12
+#: .\server\apps\catalog\models\item.py:29
+#: .\server\templates\catalog\products.html:22
+#: .\server\templates\table_products.html:19
 msgid "Image"
 msgstr "Изображение"
 
-#: .\server\apps\catalog\models\item.py:35
+#: .\server\apps\catalog\models\item.py:30
 msgid "Images"
 msgstr "Изображении"
 
-#: .\server\apps\catalog\models\item.py:52
+#: .\server\apps\catalog\models\item.py:48
 msgid "description"
 msgstr "описание"
 
-#: .\server\apps\catalog\models\item.py:60
+#: .\server\apps\catalog\models\item.py:56
 msgid "tags"
 msgstr "теги"
 
-#: .\server\apps\catalog\models\item.py:66
+#: .\server\apps\catalog\models\item.py:62
 #, fuzzy
 #| msgid "Categories"
 msgid "categories"
 msgstr "категории"
 
-#: .\server\apps\catalog\models\item.py:70
+#: .\server\apps\catalog\models\item.py:66
 msgid "is on main"
 msgstr "находится на главной"
 
-#: .\server\apps\catalog\models\item.py:74
+#: .\server\apps\catalog\models\item.py:70
 msgid "gallery"
 msgstr "галерея"
 
-#: .\server\apps\catalog\models\item.py:79
+#: .\server\apps\catalog\models\item.py:83
 msgid "Product"
 msgstr "Продукт"
 
-#: .\server\apps\catalog\models\item.py:80
+#: .\server\apps\catalog\models\item.py:84
 msgid "Products"
 msgstr "Продукты"
 
@@ -105,9 +106,28 @@ msgid "Tag"
 msgstr "Тег"
 
 #: .\server\apps\catalog\models\tag.py:14
-#: .\server\templates\catalog\table_products.html:11
+#: .\server\templates\catalog\products.html:21
+#: .\server\templates\table_products.html:18
 msgid "Tags"
 msgstr "Теги"
+
+#: .\server\apps\catalog\views.py:59
+#, fuzzy
+#| msgid "Products"
+msgid "New Products"
+msgstr "Новинки"
+
+#: .\server\apps\catalog\views.py:75
+#, fuzzy
+#| msgid "Products"
+msgid "Friday Products"
+msgstr "Пятничные продукты"
+
+#: .\server\apps\catalog\views.py:94
+#, fuzzy
+#| msgid "Products"
+msgid "Old Products"
+msgstr "Необновляемые продукты"
 
 #: .\server\apps\core\models\base.py:16
 msgid "name"
@@ -152,7 +172,7 @@ msgstr "Уппс!"
 msgid "not_found_header"
 msgstr "Страница не найдена."
 
-#: .\server\templates\404.html:13
+#: .\server\templates\404.html:10
 msgid "not_found_text"
 msgstr "Страница, которую вы ищете, не существует."
 
@@ -162,21 +182,24 @@ msgstr ""
 "Проект представляет собой маркетплейс, в нем продаются разные товары, от "
 "книг до продуктов питания."
 
-#: .\server\templates\catalog\table_products.html:8
+#: .\server\templates\catalog\products.html:19
+#: .\server\templates\table_products.html:15
 msgid "Name"
 msgstr "Название"
 
-#: .\server\templates\catalog\table_products.html:10
+#: .\server\templates\catalog\products.html:20
+#: .\server\templates\table_products.html:17
 #, fuzzy
 #| msgid "description"
 msgid "Description"
 msgstr "Описание"
 
-#: .\server\templates\catalog\table_products.html:37
+#: .\server\templates\catalog\products.html:45
+#: .\server\templates\table_products.html:44
 msgid "Detail"
 msgstr "Подробнее"
 
-#: .\server\templates\nav.html:36
+#: .\server\templates\nav.html:37
 msgid "Admin panel"
 msgstr "Панель администратора"
 

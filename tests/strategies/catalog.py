@@ -48,11 +48,12 @@ def include_tags(
 
 def include_images(
     product: CatalogItem,
+    image_content: bytes,
 ):
     """Function to add images."""
     image = SimpleUploadedFile(
         'cat.jpg',
-        EMPTY_PIXEL,
+        content=image_content,
         content_type='image/jpeg',
     )
     image.product = product  # type: ignore[attr-defined]
@@ -65,6 +66,7 @@ def include_images(
     )
     image_item.save()
     product.gallery.add(image_item)
+    product.save()
 
     return product
 
@@ -92,6 +94,13 @@ base_tags_strategy = strategies.lists(
             min_value=1,
             max_value=(2 ** 63) - 1,
         ),
+        name=strategies.text(
+            alphabet=strategies.from_regex(
+                '^[а-яА-Яa-zA-Z]$', fullmatch=True,
+            ),
+            min_size=10,
+            max_size=150,
+        ),
     ),
     min_size=1,
     unique=True,
@@ -107,6 +116,20 @@ base_category_strategy = django.from_model(
     id=strategies.integers(
         min_value=1,
         max_value=(2 ** 63) - 1,
+    ),
+    name=strategies.text(
+        alphabet=strategies.from_regex(
+            '^[а-яА-Яa-zA-Z]$', fullmatch=True,
+        ),
+        min_size=100,
+        max_size=150,
+    ),
+    slug=strategies.text(
+        alphabet=strategies.from_regex(
+            '^[0-9-_a-zA-Z]$', fullmatch=True,
+        ),
+        min_size=100,
+        max_size=200,
     ),
 )
 

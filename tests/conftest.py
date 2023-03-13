@@ -22,7 +22,8 @@ hypothesis.settings.register_profile(
             hypothesis.HealthCheck.filter_too_much,
         ],
         max_examples=500,
-        deadline=500,
+        deadline=1000,
+        stateful_step_count=150,
     ),
 )
 

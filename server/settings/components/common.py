@@ -73,6 +73,7 @@ MIDDLEWARE: Tuple[str, ...] = (
     'django.middleware.security.SecurityMiddleware',
     # whitenoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'server.apps.core.middleware.add_header_middleware',
     # django-permissions-policy
     'django_permissions_policy.PermissionsPolicyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

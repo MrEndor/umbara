@@ -18,3 +18,4 @@ REPLACEMENT_TABLE: Final[Dict[str, str]] = {  # noqa: WPS317
 } | {symbol: '' for symbol in _symbols}
 
 DEFAULT_GEOMETRY_STRING = '300x300'
+IMAGES_REGEX: Final[str] = r'([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)'

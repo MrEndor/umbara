@@ -1,8 +1,8 @@
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import Http404, HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
 from server.apps.catalog.models import CatalogItem
+from server.apps.core.pagination import pagination
 
 
 def home(request: HttpRequest) -> HttpResponse:
@@ -11,12 +11,7 @@ def home(request: HttpRequest) -> HttpResponse:
 
     page_number = request.GET.get('page', default=1)
 
-    paginator = Paginator(products, per_page=5)
-
-    try:
-        page_obj = paginator.page(page_number)
-    except (PageNotAnInteger, EmptyPage):
-        raise Http404('No such page exists.')
+    page_obj = pagination(products, page_number)
 
     context = {
         'product_page': page_obj,

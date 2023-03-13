@@ -27,7 +27,7 @@ def catalog_tag_normalized_different_names() -> List[Tuple[str, str]]:
     ]
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope='class')
 def item_list_not_deferred_fields():
     """Fixture for deferred item list fields."""
     return {

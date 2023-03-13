@@ -32,9 +32,11 @@
           {% trans "List of products" %}
         </a>
       </li>
+      {% if user.is_superuser  %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin panel" %}</a>
       </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
