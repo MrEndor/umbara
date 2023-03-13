@@ -8,6 +8,7 @@ from hypothesis import given, settings
 from hypothesis.extra import django
 
 from server.apps.feedback.forms import FeedbackForm
+from server.apps.feedback.models import Feedback
 
 FEEDBACK_FORM_KEY = 'form'
 
@@ -30,7 +31,7 @@ def test_feedback_page(
     assert text_field.label == _('Your message')
 
 
-@pytest.mark.django_db(transaction=True)
+@pytest.mark.django_db()
 @given(
     form=django.from_form(
         FeedbackForm,  # type: ignore[arg-type]
@@ -42,14 +43,18 @@ def test_feedback_create_page(
     form: FeedbackForm,
 ):
     """This test ensures that feedback page works."""
-    form.save()
-
+    fields = form.data
     response = client.post(
-        reverse('feedback:create'), data=form.clean(),
+        reverse('feedback:create'), data=fields,
     )
 
     assert response.status_code == HTTPStatus.FOUND
     assert response['Location'] == reverse('feedback:feedback')
+
+    assert Feedback.objects.filter(
+        email=fields['email'],
+        text=fields['text'],
+    ).exists()
 
 
 @pytest.mark.django_db(transaction=True)
