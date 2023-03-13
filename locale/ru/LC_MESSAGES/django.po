@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-13 19:14+0300\n"
+"POT-Creation-Date: 2023-03-13 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,31 +150,47 @@ msgstr "изображение"
 msgid "Submit"
 msgstr "Отправить"
 
-#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:19
+#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:37
 msgid "feedback form"
 msgstr "форма обратной связи"
 
-#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:20
+#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:38
 msgid "feedbacks forms"
 msgstr "формы обратной связи"
 
-#: .\server\apps\feedback\forms.py:33
+#: .\server\apps\feedback\forms.py:34
 #: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:29
 msgid "Your email"
 msgstr "Ваша электронная почта"
 
-#: .\server\apps\feedback\forms.py:34
+#: .\server\apps\feedback\forms.py:35
 #: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:30
 msgid "Your message"
 msgstr "Ваше сообщение"
 
-#: .\server\apps\feedback\models.py:9
+#: .\server\apps\feedback\models.py:11
+msgid "Received"
+msgstr "Получено"
+
+#: .\server\apps\feedback\models.py:12
+msgid "In processing"
+msgstr "В процессе"
+
+#: .\server\apps\feedback\models.py:13
+msgid "The answer is given"
+msgstr "Ответ дан"
+
+#: .\server\apps\feedback\models.py:21
 msgid "text"
 msgstr "текст"
 
-#: .\server\apps\feedback\models.py:15
+#: .\server\apps\feedback\models.py:27
 msgid "email"
 msgstr "почта"
+
+#: .\server\apps\feedback\models.py:33
+msgid "status"
+msgstr "статус"
 
 #: .\server\apps\feedback\views.py:44
 msgid "form_success"
