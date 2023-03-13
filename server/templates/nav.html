@@ -32,6 +32,13 @@
           {% trans "List of products" %}
         </a>
       </li>
+      <li class="nav-item">
+        {% url 'feedback:feedback' as feedback_url %}
+        <a href="{{ feedback_url }}"
+          class="nav-link {% if request.path == feedback_url %}{{ 'active' }}{% endif %}">
+          {% trans "Feedback" %}
+        </a>
+      </li>
       {% if user.is_superuser  %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin panel" %}</a>

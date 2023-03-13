@@ -20,6 +20,7 @@ from health_check import urls as health_urls
 
 from server.apps.about import urls as about_urls
 from server.apps.catalog import urls as catalog_urls
+from server.apps.feedback import urls as feedback_urls
 from server.apps.homepage import urls as homepage_urls
 from server.endpoints import coffee
 
@@ -30,6 +31,7 @@ urlpatterns = [
     path('', include(homepage_urls, namespace='homepage')),
     path('about/', include(about_urls, namespace='about')),
     path('catalog/', include(catalog_urls, namespace='catalog')),
+    path('feedback/', include(feedback_urls, namespace='feedback')),
 
     path('coffee/', coffee, name='coffee'),
 
