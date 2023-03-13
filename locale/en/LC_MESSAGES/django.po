@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 17:15+0300\n"
+"POT-Creation-Date: 2023-03-13 17:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid "weight"
 msgstr "weight"
 
 #: .\server\apps\catalog\models\category.py:36
-#: .\server\templates\catalog\table_products.html:9
+#: .\server\templates\table_products.html:16
 msgid "Category"
 msgstr "Category"
 
@@ -51,7 +51,7 @@ msgstr "Category"
 msgid "Categories"
 msgstr "Categories"
 
-#: .\server\apps\catalog\models\item.py:18
+#: .\server\apps\catalog\models\item.py:13
 #, python-brace-format
 msgid ""
 "The description should be more than 2x words and contain the words "
@@ -60,40 +60,41 @@ msgstr ""
 "The description should be more than 2x words and contain the words "
 "\"{words}\""
 
-#: .\server\apps\catalog\models\item.py:34
-#: .\server\templates\catalog\table_products.html:12
+#: .\server\apps\catalog\models\item.py:29
+#: .\server\templates\catalog\products.html:22
+#: .\server\templates\table_products.html:19
 msgid "Image"
 msgstr "Image"
 
-#: .\server\apps\catalog\models\item.py:35
+#: .\server\apps\catalog\models\item.py:30
 msgid "Images"
 msgstr "Images"
 
-#: .\server\apps\catalog\models\item.py:52
+#: .\server\apps\catalog\models\item.py:48
 msgid "description"
 msgstr "description"
 
-#: .\server\apps\catalog\models\item.py:60
+#: .\server\apps\catalog\models\item.py:56
 msgid "tags"
 msgstr "tags"
 
-#: .\server\apps\catalog\models\item.py:66
+#: .\server\apps\catalog\models\item.py:62
 msgid "categories"
 msgstr "categories"
 
-#: .\server\apps\catalog\models\item.py:70
+#: .\server\apps\catalog\models\item.py:66
 msgid "is on main"
 msgstr "is on main"
 
-#: .\server\apps\catalog\models\item.py:74
+#: .\server\apps\catalog\models\item.py:70
 msgid "gallery"
 msgstr "gallery"
 
-#: .\server\apps\catalog\models\item.py:79
+#: .\server\apps\catalog\models\item.py:83
 msgid "Product"
 msgstr "Product"
 
-#: .\server\apps\catalog\models\item.py:80
+#: .\server\apps\catalog\models\item.py:84
 msgid "Products"
 msgstr "Products"
 
@@ -102,9 +103,28 @@ msgid "Tag"
 msgstr "Tag"
 
 #: .\server\apps\catalog\models\tag.py:14
-#: .\server\templates\catalog\table_products.html:11
+#: .\server\templates\catalog\products.html:21
+#: .\server\templates\table_products.html:18
 msgid "Tags"
 msgstr "Tags"
+
+#: .\server\apps\catalog\views.py:59
+#, fuzzy
+#| msgid "Products"
+msgid "New Products"
+msgstr "New Products"
+
+#: .\server\apps\catalog\views.py:75
+#, fuzzy
+#| msgid "Products"
+msgid "Friday Products"
+msgstr "Friday Products"
+
+#: .\server\apps\catalog\views.py:94
+#, fuzzy
+#| msgid "Products"
+msgid "Old Products"
+msgstr "Old Products"
 
 #: .\server\apps\core\models\base.py:16
 msgid "name"
@@ -131,11 +151,35 @@ msgstr "Name is already exists"
 msgid "image"
 msgstr "image"
 
-#: .\server\settings\components\common.py:124
+#: .\server\apps\feedback\forms.py:22
+msgid "Submit"
+msgstr ""
+
+#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:19
+msgid "feedback form"
+msgstr ""
+
+#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:20
+msgid "feedbacks forms"
+msgstr ""
+
+#: .\server\apps\feedback\models.py:9
+msgid "text"
+msgstr ""
+
+#: .\server\apps\feedback\models.py:15
+msgid "email"
+msgstr ""
+
+#: .\server\apps\feedback\views.py:40
+msgid "form_success"
+msgstr "Form submission successful"
+
+#: .\server\settings\components\common.py:131
 msgid "English"
 msgstr "English"
 
-#: .\server\settings\components\common.py:125
+#: .\server\settings\components\common.py:132
 msgid "Russian"
 msgstr "Russian"
 
@@ -147,26 +191,34 @@ msgstr "Opps!"
 msgid "not_found_header"
 msgstr "Page not found."
 
-#: .\server\templates\404.html:13
+#: .\server\templates\404.html:10
 msgid "not_found_text"
 msgstr "The page you’re looking for doesn’t exist."
 
 #: .\server\templates\about\index.html:8
 msgid "project_about"
-msgstr "The project is a marketplace, it sells different goods, from books to food."
+msgstr ""
+"The project is a marketplace, it sells different goods, from books to food."
 
-#: .\server\templates\catalog\table_products.html:8
+#: .\server\templates\catalog\products.html:19
+#: .\server\templates\table_products.html:15
 msgid "Name"
 msgstr "Name"
 
-#: .\server\templates\catalog\table_products.html:10
+#: .\server\templates\catalog\products.html:20
+#: .\server\templates\table_products.html:17
 msgid "Description"
 msgstr "Description"
 
-#: .\server\templates\catalog\table_products.html:37
+#: .\server\templates\catalog\products.html:45
+#: .\server\templates\table_products.html:44
 msgid "Detail"
 msgstr "Detail"
 
-#: .\server\templates\nav.html:36
+#: .\server\templates\nav.html:39
+msgid "Feedback"
+msgstr "Feedback"
+
+#: .\server\templates\nav.html:44
 msgid "Admin panel"
 msgstr "Admin panel"

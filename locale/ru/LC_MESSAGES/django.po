@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-09 21:50+0300\n"
+"POT-Creation-Date: 2023-03-13 19:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,8 +80,6 @@ msgid "tags"
 msgstr "теги"
 
 #: .\server\apps\catalog\models\item.py:62
-#, fuzzy
-#| msgid "Categories"
 msgid "categories"
 msgstr "категории"
 
@@ -112,20 +110,14 @@ msgid "Tags"
 msgstr "Теги"
 
 #: .\server\apps\catalog\views.py:59
-#, fuzzy
-#| msgid "Products"
 msgid "New Products"
 msgstr "Новинки"
 
 #: .\server\apps\catalog\views.py:75
-#, fuzzy
-#| msgid "Products"
 msgid "Friday Products"
 msgstr "Пятничные продукты"
 
 #: .\server\apps\catalog\views.py:94
-#, fuzzy
-#| msgid "Products"
 msgid "Old Products"
 msgstr "Необновляемые продукты"
 
@@ -139,8 +131,6 @@ msgid "Maximum length {maximum}"
 msgstr "Максимальная длина {maximum}"
 
 #: .\server\apps\core\models\base.py:24
-#, fuzzy
-#| msgid "published"
 msgid "published"
 msgstr "опубликовано"
 
@@ -156,11 +146,45 @@ msgstr "Название уже существует"
 msgid "image"
 msgstr "изображение"
 
-#: .\server\settings\components\common.py:124
+#: .\server\apps\feedback\forms.py:22
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:19
+msgid "feedback form"
+msgstr "форма обратной связи"
+
+#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:20
+msgid "feedbacks forms"
+msgstr "формы обратной связи"
+
+#: .\server\apps\feedback\forms.py:33
+#: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:29
+msgid "Your email"
+msgstr "Ваша электронная почта"
+
+#: .\server\apps\feedback\forms.py:34
+#: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:30
+msgid "Your message"
+msgstr "Ваше сообщение"
+
+#: .\server\apps\feedback\models.py:9
+msgid "text"
+msgstr "текст"
+
+#: .\server\apps\feedback\models.py:15
+msgid "email"
+msgstr "почта"
+
+#: .\server\apps\feedback\views.py:44
+msgid "form_success"
+msgstr "Отправка формы выполнена успешно"
+
+#: .\server\settings\components\common.py:131
 msgid "English"
 msgstr "Анлгийский"
 
-#: .\server\settings\components\common.py:125
+#: .\server\settings\components\common.py:132
 msgid "Russian"
 msgstr "Русский"
 
@@ -189,8 +213,6 @@ msgstr "Название"
 
 #: .\server\templates\catalog\products.html:20
 #: .\server\templates\table_products.html:17
-#, fuzzy
-#| msgid "description"
 msgid "Description"
 msgstr "Описание"
 
@@ -199,7 +221,11 @@ msgstr "Описание"
 msgid "Detail"
 msgstr "Подробнее"
 
-#: .\server\templates\nav.html:37
+#: .\server\templates\nav.html:39
+msgid "Feedback"
+msgstr "Обратная связь"
+
+#: .\server\templates\nav.html:44
 msgid "Admin panel"
 msgstr "Панель администратора"
 
