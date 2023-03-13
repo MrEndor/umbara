@@ -28,6 +28,7 @@ class FeedbackForm(forms.ModelForm[models.Feedback]):
         verbose_name_plural = _('feedbacks forms')
         exclude = (
             models.Feedback.created_on.field.name,  # type: ignore[attr-defined]
+            models.Feedback.status.field.name,  # type: ignore[attr-defined]
         )
         labels = {
             'email': _('Your email'),
