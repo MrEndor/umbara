@@ -5,9 +5,11 @@ It may be also used for extending doctest's context:
 1. https://docs.python.org/3/library/doctest.html
 2. https://docs.pytest.org/en/latest/doctest.html
 """
-
+import sys
+from importlib import reload, import_module
 import hypothesis
 import pytest
+from django.urls import clear_url_caches
 
 pytest_plugins = [
     'tests.fixtures.apps.catalog',
@@ -28,7 +30,7 @@ hypothesis.settings.register_profile(
 )
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture()
 def _media_root(settings, tmpdir_factory) -> None:
     """Forces django to save media files into temp folder."""
     settings.MEDIA_ROOT = tmpdir_factory.mktemp('media', numbered=True)
