@@ -5,10 +5,10 @@ from django.test import Client
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from hypothesis import given, settings
-from hypothesis.extra import django
 
 from server.apps.feedback.forms import FeedbackForm
-from server.apps.feedback.models import Feedback
+from server.apps.feedback.models import Feedback, FeedbackPersonalData
+from tests.strategies.feedback import base_feedback_form_strategy
 
 FEEDBACK_FORM_KEY = 'form'
 
@@ -33,12 +33,10 @@ def test_feedback_page(
 
 @pytest.mark.django_db()
 @given(
-    form=django.from_form(
-        FeedbackForm,  # type: ignore[arg-type]
-    ),
+    form=base_feedback_form_strategy,
 )
 @settings(max_examples=10)
-def test_feedback_create_page(
+def test_feedback_create_page(  # noqa: WPS210, WPS218
     client: Client,
     form: FeedbackForm,
 ):
@@ -51,10 +49,28 @@ def test_feedback_create_page(
     assert response.status_code == HTTPStatus.FOUND
     assert response['Location'] == reverse('feedback:feedback')
 
-    assert Feedback.objects.filter(
+    personal_data = FeedbackPersonalData.objects.filter(
         email=fields['email'],
+    )
+
+    assert personal_data.exists()
+
+    feedback = Feedback.objects.filter(
+        personal_data=personal_data.get(),
         text=fields['text'],
-    ).exists()
+    )
+    feedback.exists()  # call explicitly, otherwise django does not see
+
+    assert feedback.exists()
+
+    files = feedback.last().files  # type: ignore[union-attr]
+
+    assert files.exists()  # type: ignore[union-attr]
+
+    for uploaded_file in files.all():  # type: ignore[union-attr]
+        response = client.get(uploaded_file.file.url)
+
+        assert response.status_code == HTTPStatus.OK
 
 
 @pytest.mark.django_db(transaction=True)
