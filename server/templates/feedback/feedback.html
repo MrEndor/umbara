@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block content %}
 <div class="d-flex align-items-center justify-content-center">
@@ -19,8 +20,11 @@
       name="form-2"
       style="padding: 10px;"
     >
-      {% csrf_token %}
-      {% crispy form form.viewer %}
+    {% csrf_token %}
+      <div>
+        {% crispy form form.viewer %}
+        <button class="btn btn-dark my-4" type="submit">{% trans 'Submit' %}</button>
+      </div>
     </form>
   </div>
 </div>

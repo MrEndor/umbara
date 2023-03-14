@@ -8,19 +8,19 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
 
 from server import settings
-from server.apps.feedback.forms import FeedbackForm
+from server.apps.feedback import forms
 
 
 @require_http_methods(request_method_list=['GET'])
 def feedback(request: HttpRequest) -> HttpResponse:
     """View for feedback page."""
-    form = FeedbackForm()
+    feedback_from = forms.FeedbackForm()
 
     return render(
         request,
         'feedback/feedback.html',
         context={
-            'form': form,
+            'form': feedback_from,
         },
     )
 
@@ -28,27 +28,33 @@ def feedback(request: HttpRequest) -> HttpResponse:
 @require_http_methods(request_method_list=['POST'])
 def create_feedback(request: HttpRequest) -> HttpResponse:
     """View for create feedback page."""
-    form = FeedbackForm(request.POST or None)
+    feedback_form = forms.FeedbackForm(
+        request.POST or None,
+        request.FILES or None,
+    )
 
-    if not form.is_valid():
+    if not feedback_form.is_valid():
         return render(
             request,
             'feedback/feedback.html',
             context={
-                'form': form,
+                'form': feedback_form,
             },
             status=HTTPStatus.BAD_REQUEST,
         )
+    instance = feedback_form.save()
+    feedback_form.save_m2m()
 
-    model = form.save()
     messages.success(request, _('form_success'))
 
     send_mail(
         subject=request.user.get_username(),
-        message=model.text,
+        message=instance.text,
         from_email=settings.SERVER_EMAIL,  # type: ignore[attr-defined]
         fail_silently=False,
-        recipient_list=[model.email],
+        recipient_list=[
+            str(instance.personal_data.email),  # type: ignore[union-attr]
+        ],
     )
 
     return redirect('feedback:feedback')
