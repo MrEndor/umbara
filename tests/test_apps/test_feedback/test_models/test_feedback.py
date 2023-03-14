@@ -20,3 +20,4 @@ class TestCategoryModel(django.TestCase):
         assert instance.id > 0
         assert len(instance.text) <= 255
         assert len(str(instance))
+        assert len(str(instance.personal_data))
