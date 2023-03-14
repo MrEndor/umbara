@@ -27,12 +27,6 @@ hypothesis.settings.register_profile(
 )
 
 
-@pytest.fixture()
-def _media_root(settings, tmpdir_factory) -> None:
-    """Forces django to save media files into temp folder."""
-    settings.MEDIA_ROOT = tmpdir_factory.mktemp('media', numbered=True)
-
-
 @pytest.fixture(autouse=True)
 def _password_hashers(settings) -> None:
     """Forces django to use fast password hashers for tests."""
