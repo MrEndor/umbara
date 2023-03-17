@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from typing import Dict, List, Tuple, Union
 
+from django.contrib import messages
 from django.urls import register_converter
 from django.utils.translation import gettext_lazy as _
 
@@ -29,6 +30,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     'server.apps.homepage',
     'server.apps.catalog',
     'server.apps.about',
+    'server.apps.feedback',
 
     # Default django apps:
     'django.contrib.auth',
@@ -49,6 +51,10 @@ INSTALLED_APPS: Tuple[str, ...] = (
 
     # ckeditor
     'ckeditor',
+
+    # forms
+    'crispy_forms',
+    'crispy_bootstrap5',
 
     # Security:
     'axes',
@@ -220,7 +226,9 @@ PERMISSIONS_POLICY: Dict[str, Union[str, List[str]]] = {}  # noqa: WPS234
 # https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-EMAIL_TIMEOUT
 
 EMAIL_TIMEOUT = 5
-
+SERVER_EMAIL = components.config('EMAIL')
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = components.BASE_DIR.joinpath('send_mail')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -252,3 +260,14 @@ CKEDITOR_CONFIGS = {
 }
 
 CKEDITOR_UPLOAD_PATH = MEDIA_ROOT / 'uploads'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}

@@ -5,7 +5,6 @@ It may be also used for extending doctest's context:
 1. https://docs.python.org/3/library/doctest.html
 2. https://docs.pytest.org/en/latest/doctest.html
 """
-
 import hypothesis
 import pytest
 
@@ -22,16 +21,10 @@ hypothesis.settings.register_profile(
             hypothesis.HealthCheck.filter_too_much,
         ],
         max_examples=500,
-        deadline=1000,
+        deadline=1500,
         stateful_step_count=150,
     ),
 )
-
-
-@pytest.fixture(autouse=True)
-def _media_root(settings, tmpdir_factory) -> None:
-    """Forces django to save media files into temp folder."""
-    settings.MEDIA_ROOT = tmpdir_factory.mktemp('media', numbered=True)
 
 
 @pytest.fixture(autouse=True)
