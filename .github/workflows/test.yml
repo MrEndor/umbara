@@ -30,11 +30,11 @@ jobs:
       run: |
           wget https://sqlite.org/2023/sqlite-autoconf-3410100.tar.gz
           tar -xvf sqlite-autoconf-3410100.tar.gz
+          cd sqlite-autoconf-3410100
           ./configure
           make
           sudo make install
           export PATH="/usr/local/lib:$PATH"
-      working-directory: sqlite-autoconf-3410100
 
     - name: Install poetry
       env:  # Keep in sync with `POETRY_VERSION` in `Dockerfile`
