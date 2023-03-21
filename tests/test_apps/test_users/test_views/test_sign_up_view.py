@@ -51,6 +51,8 @@ def test_signup_create_page(  # noqa: WPS218
     """This test ensures that signup create page works."""
     fields = form.data
 
+    User.objects.filter(username=fields[USERNAME_FIELD]).delete()
+
     response = client.post(
         reverse('users:create_signup'), data=fields,
     )
