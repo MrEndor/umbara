@@ -67,10 +67,10 @@ def test_signup_create_page(  # noqa: WPS218
     assert not user.is_staff
     assert not user.is_superuser
 
-    user.delete()
+    user_query.delete()
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db(transaction=True)
 @given(
     form=base_user_signup_form_strategy,
 )
@@ -81,6 +81,8 @@ def test_active_create_page(  # noqa: WPS210
 ):
     """This test ensures that activate page works."""
     fields = form.data
+
+    User.objects.filter(username=fields['username']).delete()
 
     now = datetime.now() + timedelta(hours=12)
 
