@@ -72,6 +72,8 @@ def test_feedback_create_page(  # noqa: WPS210, WPS218
 
         assert response.status_code == HTTPStatus.OK
 
+    feedback.delete()
+
 
 @pytest.mark.django_db(transaction=True)
 def test_error_feedback_create_page(client: Client):

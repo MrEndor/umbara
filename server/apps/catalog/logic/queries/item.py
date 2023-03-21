@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Optional
 from django.db.models import Manager, Prefetch, QuerySet
 
 from server.apps.catalog import models
+from server.apps.core.fields import get_field_name
 
 if TYPE_CHECKING:
     from server.apps.catalog.models import CatalogItem  # pragma: no cover
@@ -11,13 +12,6 @@ if TYPE_CHECKING:
 CatalogName = 'name'
 GalleryImage = 'image'
 TagsName = 'name'
-
-
-def get_field_name(
-    model_field,
-) -> str:
-    """Function to get the field name."""
-    return model_field.field.name
 
 
 class CatalogItemManager(Manager['CatalogItem']):
@@ -132,6 +126,8 @@ class CatalogItemManager(Manager['CatalogItem']):
         ).defer(
             get_field_name(self.model.is_published),
             get_field_name(self.model.is_on_main),
+            get_field_name(self.model.created_at),
+            get_field_name(self.model.updated_at),
         ).get(
             id=pk,
         )

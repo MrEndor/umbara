@@ -7,7 +7,7 @@ from server.apps.catalog.logic.queries.item import CatalogItemManager
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
 from server.apps.core.models import BaseModel, ImageMixin
-from server.apps.core.validators import is_contains
+from server.apps.core.validators import ContainsValidator
 
 _HELP_TEXT = _(
     'The description should be more than 2x words and ' +
@@ -43,7 +43,9 @@ class CatalogItem(  # type: ignore[misc]
 
     text = models.TextField(
         validators=[
-            is_contains(*constants.CATALOG_ITEM_KEYWORDS),
+            ContainsValidator(
+                *constants.CATALOG_ITEM_KEYWORDS,
+            ),  # type: ignore[no-untyped-call]
         ],
         verbose_name=_('description'),
         help_text=format_lazy(

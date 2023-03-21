@@ -1,4 +1,6 @@
+from pathlib import Path
 from typing import TypeVar
+from uuid import uuid4
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -24,4 +26,8 @@ class FileMixin(models.Model):
 
     def get_path(self, filename: str) -> str:
         """Function for get file path."""
-        return filename  # pragma: no cover
+        file_format = Path(filename).suffix
+        return '{id}{format}'.format(
+            id=uuid4(),
+            format=file_format,
+        )

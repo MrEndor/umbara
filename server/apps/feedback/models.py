@@ -48,7 +48,8 @@ class FeedbackFile(FileMixin):
     def get_path(self, filename: str) -> str:
         """Function for get file path."""
         return 'uploads/{id}/{filename}'.format(
-            id=self.feedback.id, filename=filename,
+            id=self.feedback.id,
+            filename=super().get_path(filename),
         )
 
     class Meta:
