@@ -95,11 +95,6 @@ account_urlpatterns = [
         name='list',
     ),
     path(
-        'users/<username>/',
-        views.user_detail,
-        name='detail',
-    ),
-    path(
         'users/profile/',
         views.profile,
         name='profile',
@@ -108,6 +103,11 @@ account_urlpatterns = [
         'users/profile/change/',
         views.change_profile,
         name='change_profile',
+    ),
+    path(
+        'users/<username>/',
+        views.user_detail,
+        name='detail',
     ),
 ]
 
