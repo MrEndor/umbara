@@ -49,3 +49,9 @@ def _debug(settings) -> None:
     settings.DEBUG = False
     for template in settings.TEMPLATES:
         template['OPTIONS']['debug'] = True
+
+
+@pytest.fixture(autouse=True)
+def _email_backend(settings):
+    """Forces django to use locmem email backend."""
+    settings.EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
