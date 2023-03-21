@@ -62,6 +62,6 @@ def activate_user(request: HttpRequest, token: str):
 
     user.is_active = True
     user.save()
-    messages.error(request, _('Account successfully activated'))
+    messages.success(request, _('Account successfully activated'))
 
     return redirect('users:activate_done')

@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from freezegun import freeze_time
 from hypothesis import given, settings
 
+from server.apps.users import constants
 from server.apps.users.forms import UserCreationForm, UserForm
 from server.apps.users.models import User
 from tests.strategies.user import base_user_signup_form_strategy
@@ -87,7 +88,9 @@ def test_active_create_page(  # noqa: WPS210
 
     User.objects.filter(username=fields[USERNAME_FIELD]).delete()
 
-    now = datetime.now() + timedelta(hours=12)
+    now = datetime.now() + timedelta(
+        hours=constants.AFTER_HOURS_ACTIVATE_TOKEN + 1,
+    )
 
     response = client.post(
         reverse('users:create_signup'), data=fields,
