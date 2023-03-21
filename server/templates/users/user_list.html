@@ -30,6 +30,13 @@
                   <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
                 {% endthumbnail %}
               </td>
+              <td>
+                <button class="btn">
+                  <a class="btn btn-primary" href={% url 'users:detail' username=user.username %}>
+                    {% trans 'Detail' %}
+                  </a>
+                </button>
+              </td>
             </tr>
           {% endfor %}
         {% endblock table_body %}
