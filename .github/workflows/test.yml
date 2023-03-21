@@ -34,7 +34,7 @@ jobs:
           make
           sudo make install
           export PATH="/usr/local/lib:$PATH"
-      working-directory: sqlite-autoconf-3380500
+      working-directory: sqlite-autoconf-3410100
 
     - name: Install poetry
       env:  # Keep in sync with `POETRY_VERSION` in `Dockerfile`
