@@ -103,7 +103,7 @@ class Migration(migrations.Migration):
                         '\nОписание должно быть больше чем из 2x слов' +
                         ' и содержать слова "превосходно, роскошно"\n'
                     ),
-                    validators=[server.apps.core.validators.is_contains],
+                    validators=[server.apps.core.validators.ContainsValidator],
                     verbose_name='описание',
                 )),
                 ('category', models.ForeignKey(
