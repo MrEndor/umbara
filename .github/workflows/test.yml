@@ -26,6 +26,18 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - uses: actions/checkout@v2
+    - name: Build sqlite
+    - run: |
+        wget https://sqlite.org/2023/sqlite-autoconf-3410100.tar.gz
+        tar -xvf sqlite-autoconf-3410100.tar.gz
+    - run: |
+        ./configure
+        make
+        sudo make install
+        export PATH="/usr/local/lib:$PATH"
+      working-directory: sqlite-autoconf-3380500
+
     - name: Install poetry
       env:  # Keep in sync with `POETRY_VERSION` in `Dockerfile`
         POETRY_VERSION: "1.3.2"
@@ -40,6 +52,7 @@ jobs:
     - name: Run checks
       env:
         SECRET_DJANGO_SECRET_KEY: ${{ secrets.SECRET_DJANGO_SECRET_KEY }}
+        LD_LIBRARY_PATH: /usr/local/lib
       run: |
         poetry run dump-env -t config/.env.template -p 'SECRET_' --strict SECRET_DJANGO_SECRET_KEY > config/.env
         poetry run flake8 .
