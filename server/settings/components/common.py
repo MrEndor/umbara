@@ -31,6 +31,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     'server.apps.catalog',
     'server.apps.about',
     'server.apps.feedback',
+    'server.apps.users',
 
     # Default django apps:
     'django.contrib.auth',
@@ -38,6 +39,7 @@ INSTALLED_APPS: Tuple[str, ...] = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # django-admin:
     'django.contrib.admin',
@@ -191,6 +193,14 @@ MEDIA_ROOT = components.BASE_DIR.joinpath('media')
 # Django authentication system
 # https://docs.djangoproject.com/en/3.2/topics/auth/
 
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/auth/login/'
+
+INITIAL_ACTIVATION = not components.config('DEBUG', False, cast=bool)
+
+JWT_ALGORITHM = 'HS512'
+
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -203,6 +213,9 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
+# Sites
+# https://docs.djangoproject.com/en/3.2/ref/contrib/sites/
+SITE_ID = 1
 
 # Security
 # https://docs.djangoproject.com/en/3.2/topics/security/
