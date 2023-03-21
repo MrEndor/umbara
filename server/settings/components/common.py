@@ -197,7 +197,7 @@ LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/auth/login/'
 
-INITIAL_ACTIVATION = not components.config('DEBUG', default=False, cast=bool)
+INITIAL_ACTIVATION = components.config('DEBUG', default=False, cast=bool)
 
 JWT_ALGORITHM = 'HS512'
 
