@@ -12,6 +12,7 @@ files serving technique in development.
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admindocs import urls as admindocs_urls
+from django.contrib.auth import urls as auth_urls
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
@@ -22,6 +23,7 @@ from server.apps.about import urls as about_urls
 from server.apps.catalog import urls as catalog_urls
 from server.apps.feedback import urls as feedback_urls
 from server.apps.homepage import urls as homepage_urls
+from server.apps.users import urls as users_urls
 from server.endpoints import coffee
 
 admin.autodiscover()
@@ -32,6 +34,8 @@ urlpatterns = [
     path('about/', include(about_urls, namespace='about')),
     path('catalog/', include(catalog_urls, namespace='catalog')),
     path('feedback/', include(feedback_urls, namespace='feedback')),
+    path('', include(users_urls, namespace='users')),
+    path('auth/', include(auth_urls)),
 
     path('coffee/', coffee, name='coffee'),
 
