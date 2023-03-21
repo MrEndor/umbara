@@ -26,16 +26,14 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - uses: actions/checkout@v2
     - name: Build sqlite
-    - run: |
-        wget https://sqlite.org/2023/sqlite-autoconf-3410100.tar.gz
-        tar -xvf sqlite-autoconf-3410100.tar.gz
-    - run: |
-        ./configure
-        make
-        sudo make install
-        export PATH="/usr/local/lib:$PATH"
+      run: |
+          wget https://sqlite.org/2023/sqlite-autoconf-3410100.tar.gz
+          tar -xvf sqlite-autoconf-3410100.tar.gz
+          ./configure
+          make
+          sudo make install
+          export PATH="/usr/local/lib:$PATH"
       working-directory: sqlite-autoconf-3380500
 
     - name: Install poetry
