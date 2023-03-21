@@ -59,9 +59,6 @@ def test_feedback_create_page(  # noqa: WPS210, WPS218
         personal_data=personal_data.get(),
         text=fields['text'],
     )
-    feedback.exists()  # call explicitly, otherwise django does not see
-
-    assert feedback.exists()
 
     files = feedback.last().files  # type: ignore[union-attr]
 
