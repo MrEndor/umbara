@@ -57,7 +57,6 @@ def test_feedback_create_page(  # noqa: WPS210, WPS218
 
     feedback = Feedback.objects.filter(
         personal_data=personal_data.get(),
-        text=fields['text'],
     )
 
     files = feedback.last().files  # type: ignore[union-attr]
