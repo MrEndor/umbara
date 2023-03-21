@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+{% load i18n %}
+
+{% block content %}
+<p></p>
+<div class="row g-2">
+  <div class="col-sm-8 col-md-12">
+    {% block table %}
+    <table class="table">
+        <thead>
+        <tr>
+          {% block table_header %}
+            <td>{% trans 'Id' %}</td>
+            <td>{% trans 'Username' %}</td>
+            <td>{% trans 'Image' %}</td>
+            <td></td>
+          {% endblock table_header %}
+        </tr>
+        </thead>
+        <tbody>
+        {% block table_body %}
+          {% for user in users_page %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>
+                {% thumbnail user.profile.image "300x300" as image %}
+                  <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
+                {% endthumbnail %}
+              </td>
+            </tr>
+          {% endfor %}
+        {% endblock table_body %}
+        </tbody>
+    </table>
+    {% endblock table %}
+    {% block pagination %}
+    <p></p>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% for page in users_page.paginator.page_range %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+              </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endblock pagination %}
+  </div>
+</div>
+{% endblock content %}

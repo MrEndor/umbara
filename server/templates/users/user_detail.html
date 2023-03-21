@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+{% load static %}
+{% load string %}
+
+{% block content %}
+<div class="row gutters-sm">
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+        {% if user.profile.image.file %}
+          {% thumbnail user.profile.image.file "300x300" as image %}
+            <img
+              class="center-block"
+              src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="User image"
+            >
+            {% endthumbnail %}
+        {% else %}
+            <img
+              class="center-block" src="{% static 'default_image.jpg' %}" width="300" height="300" alt="User image"
+            >
+        {% endif %}
+          <div class="mt-3">
+            <h4>{{ user.first_name|unspecified }}</h4><h4>{{ user.last_name|unspecified }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Username</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ user.username }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ user.email|unspecified }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Coffee count</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ user.profile.coffee_count }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Birthday</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ user.profile.birthday|unspecified }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

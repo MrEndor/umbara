@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center">
+  <form
+    action="{{ app_path }}"
+    method="post"
+    id="login-form"
+    class="u-clearfix u-form-custom-backend u-form-spacing-35 u-form-vertical u-inner-form"
+  >
+    <div>
+      {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+      {% csrf_token %}
+      {% crispy form %}
+      {% url 'users:password_reset' as password_reset_url %}
+      {% if password_reset_url %}
+      <div class="password-reset-link">
+        <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+      </div>
+      {% endif %}
+      <div class="submit-row">
+        <button class="btn btn-dark my-4" type="submit">{% translate 'Log in' %}</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
