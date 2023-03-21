@@ -15,7 +15,7 @@ from server.apps.users.models import User
 from tests.strategies.user import base_user_signup_form_strategy
 
 USER_FORM_KEY = 'form'
-
+USERNAME_FIELD = 'username'
 
 @pytest.mark.django_db()
 def test_signup_page(  # noqa: WPS218
@@ -35,7 +35,7 @@ def test_signup_page(  # noqa: WPS218
     assert email_field.label == _('Your email')
     assert password1_field.label == _('Password')
     assert password2_field.label == _('Password confirmation')
-    assert 'username' in form.fields
+    assert USERNAME_FIELD in form.fields
 
 
 @pytest.mark.django_db()
@@ -58,7 +58,7 @@ def test_signup_create_page(  # noqa: WPS218
     assert response['Location'] == reverse('users:login')
 
     user_query = User.objects.filter(
-        username=fields['username'],
+        username=fields[USERNAME_FIELD],
     )
     assert user_query.exists()
     user: User = user_query.get()
@@ -82,7 +82,7 @@ def test_active_create_page(  # noqa: WPS210
     """This test ensures that activate page works."""
     fields = form.data
 
-    User.objects.filter(username=fields['username']).delete()
+    User.objects.filter(username=fields[USERNAME_FIELD]).delete()
 
     now = datetime.now() + timedelta(hours=12)
 
