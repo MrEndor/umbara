@@ -17,6 +17,7 @@ from tests.strategies.user import base_user_signup_form_strategy
 USER_FORM_KEY = 'form'
 USERNAME_FIELD = 'username'
 
+
 @pytest.mark.django_db()
 def test_signup_page(  # noqa: WPS218
     client: Client,
