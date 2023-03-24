@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import jwt
-import loguru
 
 from server import settings
 from server.apps.users import models
@@ -13,9 +12,6 @@ def generate_jwt_token(
     after: datetime,
 ) -> str:
     """Create jwt token by user."""
-    loguru.logger.info(after)
-    loguru.logger.info(before)
-
     return jwt.encode(
         payload={
             'id': user.pk,
