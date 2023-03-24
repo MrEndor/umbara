@@ -1,10 +1,10 @@
 from server.apps.core import fields
-from server.apps.users.models import Profile, User
+from server.apps.users.models import Profile, UserWithProfile
 
-EmailFieldUser: str = fields.get_field_name(User.email)
-UserNameFieldUser: str = fields.get_field_name(User.username)
-FirstNameFieldUser: str = fields.get_field_name(User.first_name)
-LastNameFieldUser: str = fields.get_field_name(User.last_name)
+EmailFieldUser: str = fields.get_field_name(UserWithProfile.email)
+UserNameFieldUser: str = fields.get_field_name(UserWithProfile.username)
+FirstNameFieldUser: str = fields.get_field_name(UserWithProfile.first_name)
+LastNameFieldUser: str = fields.get_field_name(UserWithProfile.last_name)
 
 BirthdayFieldProfile: str = fields.get_field_name(Profile.birthday)
 CoffeeCountFieldProfile: str = fields.get_field_name(Profile.coffee_count)
