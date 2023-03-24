@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
 from jwt import exceptions
 
-from server.apps.users import forms, service
+from server.apps.users import forms, jwt, service
 
 
 @require_http_methods(request_method_list=['GET'])
@@ -52,7 +52,7 @@ def create_signup(request: HttpRequest) -> HttpResponse:
 def activate_user(request: HttpRequest, token: str):
     """View for the active user page."""
     try:
-        user = service.token_credentials(token)
+        user = jwt.token_credentials(token)
     except exceptions.ImmatureSignatureError:
         messages.error(request, _('Token not activated yet'))
         return redirect('users:login')
