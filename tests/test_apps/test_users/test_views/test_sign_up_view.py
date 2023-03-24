@@ -12,7 +12,7 @@ from hypothesis import given, settings
 
 from server.apps.users import constants
 from server.apps.users.forms import UserCreationForm, UserForm
-from server.apps.users.models import User
+from server.apps.users.models import UserWithProfile
 from tests.strategies.user import base_user_signup_form_strategy
 
 USER_FORM_KEY = 'form'
@@ -52,7 +52,7 @@ def test_signup_create_page(  # noqa: WPS218
     """This test ensures that signup create page works."""
     fields = form.data
 
-    User.objects.filter(username=fields[USERNAME_FIELD]).delete()
+    UserWithProfile.objects.filter(username=fields[USERNAME_FIELD]).delete()
 
     response = client.post(
         reverse('users:create_signup'), data=fields,
@@ -61,12 +61,12 @@ def test_signup_create_page(  # noqa: WPS218
     assert response.status_code == HTTPStatus.FOUND
     assert response['Location'] == reverse('users:login')
 
-    user_query = User.objects.filter(
+    user_query = UserWithProfile.objects.filter(
         username=fields[USERNAME_FIELD],
     )
     assert user_query.exists()
-    user: User = user_query.get()
-    assert user.profile  # type: ignore[attr-defined]
+    user: UserWithProfile = user_query.get()
+    assert user.profile.pk
     assert not user.is_active
     assert not user.is_staff
     assert not user.is_superuser
@@ -86,7 +86,7 @@ def test_active_create_page(  # noqa: WPS210
     """This test ensures that activate page works."""
     fields = form.data
 
-    User.objects.filter(username=fields[USERNAME_FIELD]).delete()
+    UserWithProfile.objects.filter(username=fields[USERNAME_FIELD]).delete()
 
     now = datetime.now() + timedelta(
         hours=constants.AFTER_HOURS_ACTIVATE_TOKEN + 1,
@@ -112,7 +112,7 @@ def test_active_create_page(  # noqa: WPS210
     assert response.status_code == HTTPStatus.FOUND
     assert response['Location'] == reverse('users:activate_done')
 
-    user = User.objects.get(username=fields['username'])
+    user = UserWithProfile.objects.get(username=fields['username'])
 
     assert user.is_active
 

@@ -39,7 +39,7 @@ def _password_hashers(settings) -> None:
 def _auth_backends(settings) -> None:
     """Deactivates security backend from Axes app."""
     settings.AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
+        'server.apps.users.backend.UserAuthBackend',
     )
 
 
@@ -47,6 +47,7 @@ def _auth_backends(settings) -> None:
 def _debug(settings) -> None:
     """Sets proper DEBUG and TEMPLATE debug mode for coverage."""
     settings.DEBUG = False
+    settings.INITIAL_ACTIVATION = True
     for template in settings.TEMPLATES:
         template['OPTIONS']['debug'] = True
 
