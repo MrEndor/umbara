@@ -1,19 +1,27 @@
-from http import HTTPStatus
-from freezegun import freeze_time
-from datetime import datetime, timedelta
-
 import re
+from datetime import datetime, timedelta
+from http import HTTPStatus
+
 import pytest
 from django.core import mail
 from django.test import Client
 from django.urls import reverse
-from hypothesis import given, settings, strategies
+from freezegun import freeze_time
+from hypothesis import given
+from hypothesis import settings as hypothesis_settings
+from hypothesis import strategies
 from hypothesis.extra import django
 
 from server.apps.users import models
 
+TEST_PASSWORD = 'test'  # noqa: S105
 
-def _login(client, username, password):
+
+def _login(
+    client: Client,
+    username: str,
+    password: str,
+):
     post_data = {'username': username, 'password': password}
 
     return client.post(
@@ -27,31 +35,28 @@ def _login(client, username, password):
     user=django.from_model(
         models.UserWithProfile,
         is_active=strategies.just(True),
-        username=strategies.from_regex('^[a-zA-Z]$', fullmatch=True),
+        username=strategies.text(
+            alphabet=strategies.from_regex('^[a-zA-Z]$', fullmatch=True),
+            min_size=10,
+        ),
         email=strategies.emails(),
-        password=strategies.just('test')
-    )
+        password=strategies.just(TEST_PASSWORD),
+    ),
 )
-@settings(max_examples=10)
-def test_login_page(  # noqa: WPS218
+@hypothesis_settings(max_examples=10)
+def test_auth_by_username_page(  # noqa: WPS218
     client: Client,
     user: models.UserWithProfile,
 ):
     """This test ensures that signup page works."""
     user.save()
-    form_data = {'username': user.username, 'password': 'test'}
 
-    response = client.get(reverse('users:login'), data=form_data)
+    response = _login(client, username=user.username, password=TEST_PASSWORD)
     assert response.status_code == HTTPStatus.OK
 
-    client.logout()
-
-    form_data = {'username': user.email, 'password': 'test'}
-
-    response = client.get(reverse('users:login'), data=form_data)
-    assert response.status_code == HTTPStatus.OK
-
-    user.delete()
+    models.UserWithProfile.objects.filter(
+        username=user.username,
+    ).delete()
 
 
 @pytest.mark.django_db(transaction=True)
@@ -59,13 +64,49 @@ def test_login_page(  # noqa: WPS218
     user=django.from_model(
         models.UserWithProfile,
         is_active=strategies.just(True),
-        username=strategies.from_regex('^[a-zA-Z]$', fullmatch=True),
+        username=strategies.text(
+            alphabet=strategies.from_regex('^[a-zA-Z]$', fullmatch=True),
+            min_size=10,
+        ),
         email=strategies.emails(),
-        password=strategies.just('test')
-    )
+        password=strategies.just(TEST_PASSWORD),
+    ),
 )
-@settings(max_examples=10)
-def test_login_page(  # noqa: WPS218
+@hypothesis_settings(max_examples=3)
+def test_auth_by_email_page(  # noqa: WPS218
+    client: Client,
+    user: models.UserWithProfile,
+):
+    """This test ensures that signup page works."""
+    models.UserWithProfile.objects.filter(
+        email=user.email,
+    ).delete()
+
+    user.save()
+
+    response = _login(client, username=user.email, password=TEST_PASSWORD)
+    assert response.status_code == HTTPStatus.OK
+
+    models.UserWithProfile.objects.filter(
+        email=user.email,
+    ).delete()
+
+
+@pytest.mark.django_db(transaction=True)
+@given(
+    user=django.from_model(
+        models.UserWithProfile,
+        is_active=strategies.just(True),
+        username=strategies.text(
+            alphabet=strategies.from_regex('^[a-zA-Z]$', fullmatch=True),
+            min_size=10,
+        ),
+        email=strategies.emails(),
+        password=strategies.just(TEST_PASSWORD),
+    ),
+)
+@hypothesis_settings(max_examples=10)
+def test_lockout_page(  # noqa: WPS218
     client: Client,
     settings,
     user: models.UserWithProfile,
