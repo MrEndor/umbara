@@ -200,10 +200,14 @@ LOGOUT_REDIRECT_URL = '/auth/login/'
 INITIAL_ACTIVATION = components.config('DEBUG', default=False, cast=bool)
 
 JWT_ALGORITHM = 'HS512'
+AXES_FAILURE_LIMIT = 5
+AXES_RESET_ON_SUCCESS = True
+AXES_ONLY_USER_FAILURES = True
+AXES_LOCKOUT_TEMPLATE = 'users/auth/lockout.html'
 
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    'server.apps.users.backend.UserAuthBackend',
 )
 
 PASSWORD_HASHERS = [
