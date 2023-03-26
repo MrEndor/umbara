@@ -1,40 +1,96 @@
-from typing import Final
+from datetime import date, timedelta
 
-from django.core.paginator import Paginator
-from django.http import HttpRequest, HttpResponse
+from django.db.models import F  # noqa: WPS347
+from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
+from server.apps.catalog.constants import FRIDAY, PRODUCT_PAGE
 from server.apps.catalog.models import CatalogItem
+from server.apps.core.pagination import pagination
 
-ITEM_LIST_TEXT: Final[str] = 'Список элементов'
-ITEM_DETIAL_TEXT: Final[str] = 'Подробно элемент'
+
+def extract_page(request, default: int):
+    """Extract page number from request."""
+    return request.GET.get('page', default=default)
 
 
 def item_list(request: HttpRequest) -> HttpResponse:
     """View for the item list."""
-    products = CatalogItem.objects.exclude(
-        is_published=False,
-    ).all()
-    page_number = request.GET.get('page', default=1)
+    products = CatalogItem.objects.list_products()
+    page_number = extract_page(request, 1)
 
-    paginator = Paginator(products, per_page=5)
-    page_obj = paginator.page(page_number)
+    page_obj = pagination(products, page_number)
 
     return render(
         request,
         'catalog/products.html',
-        context={'product_page': page_obj},
+        context={PRODUCT_PAGE: page_obj},
     )
 
 
 def item_detail(request: HttpRequest, product_id: int) -> HttpResponse:
     """View for the item detail."""
-    product = CatalogItem.objects.get(
-        id=product_id,
-    )
+    product = CatalogItem.objects.get_detail_by(pk=product_id)
+
+    if not product:
+        raise Http404('No such page exists.')
 
     return render(
         request,
         'catalog/details.html',
         context={'product': product},
+    )
+
+
+def new_products_list(request: HttpRequest) -> HttpResponse:
+    """View for the new product list."""
+    today = date.today()
+
+    products = CatalogItem.objects.list_random_products(
+        updated_at__gte=today - timedelta(days=7),
+    ).reverse()[:5]
+
+    return render(
+        request,
+        'catalog/sections.html',
+        context={
+            PRODUCT_PAGE: products,
+            'section': _('New Products'),
+        },
+    )
+
+
+def friday_products_list(request: HttpRequest) -> HttpResponse:
+    """View for the friday product list."""
+    products = CatalogItem.objects.list_products(
+        updated_at__week_day=FRIDAY,
+    ).order_by('-updated_at')
+
+    return render(
+        request,
+        'catalog/sections.html',
+        context={
+            PRODUCT_PAGE: products[:5],
+            'section': _('Friday Products'),
+        },
+    )
+
+
+def old_products_list(request: HttpRequest) -> HttpResponse:
+    """View for the old product list."""
+    products = CatalogItem.objects.list_products(
+        updated_at=F('created_at'),
+    )
+    page_number = extract_page(request, 1)
+
+    page_obj = pagination(products, page_number)
+
+    return render(
+        request,
+        'catalog/sections.html',
+        context={
+            PRODUCT_PAGE: page_obj,
+            'section': _('Old Products'),
+        },
     )

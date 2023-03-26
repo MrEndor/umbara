@@ -131,7 +131,7 @@ class Migration(migrations.Migration):
                     'and contain the words "превосходно, роскошно"'
                 ),
                 validators=[
-                    server.apps.core.validators.is_contains,
+                    server.apps.core.validators.ContainsValidator,
                 ],
                 verbose_name='Description',
             ),

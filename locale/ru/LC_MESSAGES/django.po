@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 11:18+0300\n"
+"POT-Creation-Date: 2023-03-13 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:116
-#: .\server\templates\nav.html:15
+#: .\server\templates\nav.html:18
 msgid "Home"
 msgstr "На главную"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:119
-#: .\server\templates\nav.html:18
+#: .\server\templates\nav.html:25
 msgid "About project"
 msgstr "О проекте"
 
 #: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:122
-#: .\server\templates\nav.html:21
+#: .\server\templates\nav.html:32
 msgid "List of products"
 msgstr "Список товаров"
 
@@ -45,6 +45,7 @@ msgid "weight"
 msgstr "вес"
 
 #: .\server\apps\catalog\models\category.py:36
+#: .\server\templates\table_products.html:16
 msgid "Category"
 msgstr "Категория"
 
@@ -52,7 +53,7 @@ msgstr "Категория"
 msgid "Categories"
 msgstr "Категории"
 
-#: .\server\apps\catalog\models\item.py:14
+#: .\server\apps\catalog\models\item.py:13
 #, python-brace-format
 msgid ""
 "The description should be more than 2x words and contain the words "
@@ -60,12 +61,13 @@ msgid ""
 msgstr ""
 "Описание должно быть больше чем из 2x слов и содержать слова \"{words}\""
 
-#: .\server\apps\catalog\models\item.py:30
-#: .\server\templates\catalog\products.html:17
+#: .\server\apps\catalog\models\item.py:29
+#: .\server\templates\catalog\products.html:22
+#: .\server\templates\table_products.html:19
 msgid "Image"
 msgstr "Изображение"
 
-#: .\server\apps\catalog\models\item.py:31
+#: .\server\apps\catalog\models\item.py:30
 msgid "Images"
 msgstr "Изображении"
 
@@ -78,16 +80,22 @@ msgid "tags"
 msgstr "теги"
 
 #: .\server\apps\catalog\models\item.py:62
-#, fuzzy
-#| msgid "Categories"
 msgid "categories"
-msgstr "Категории"
+msgstr "категории"
 
-#: .\server\apps\catalog\models\item.py:72
+#: .\server\apps\catalog\models\item.py:66
+msgid "is on main"
+msgstr "находится на главной"
+
+#: .\server\apps\catalog\models\item.py:70
+msgid "gallery"
+msgstr "галерея"
+
+#: .\server\apps\catalog\models\item.py:83
 msgid "Product"
 msgstr "Продукт"
 
-#: .\server\apps\catalog\models\item.py:73
+#: .\server\apps\catalog\models\item.py:84
 msgid "Products"
 msgstr "Продукты"
 
@@ -96,8 +104,22 @@ msgid "Tag"
 msgstr "Тег"
 
 #: .\server\apps\catalog\models\tag.py:14
+#: .\server\templates\catalog\products.html:21
+#: .\server\templates\table_products.html:18
 msgid "Tags"
 msgstr "Теги"
+
+#: .\server\apps\catalog\views.py:59
+msgid "New Products"
+msgstr "Новинки"
+
+#: .\server\apps\catalog\views.py:75
+msgid "Friday Products"
+msgstr "Пятничные продукты"
+
+#: .\server\apps\catalog\views.py:94
+msgid "Old Products"
+msgstr "Необновляемые продукты"
 
 #: .\server\apps\core\models\base.py:16
 msgid "name"
@@ -109,8 +131,6 @@ msgid "Maximum length {maximum}"
 msgstr "Максимальная длина {maximum}"
 
 #: .\server\apps\core\models\base.py:24
-#, fuzzy
-#| msgid "published"
 msgid "published"
 msgstr "опубликовано"
 
@@ -126,31 +146,111 @@ msgstr "Название уже существует"
 msgid "image"
 msgstr "изображение"
 
-#: .\server\settings\components\common.py:119
+#: .\server\apps\feedback\forms.py:22
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:37
+msgid "feedback form"
+msgstr "форма обратной связи"
+
+#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:38
+msgid "feedbacks forms"
+msgstr "формы обратной связи"
+
+#: .\server\apps\feedback\forms.py:34
+#: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:29
+msgid "Your email"
+msgstr "Ваша электронная почта"
+
+#: .\server\apps\feedback\forms.py:35
+#: .\tests\test_apps\test_feedback\test_views\test_feedback_view.py:30
+msgid "Your message"
+msgstr "Ваше сообщение"
+
+#: .\server\apps\feedback\models.py:11
+msgid "Received"
+msgstr "Получено"
+
+#: .\server\apps\feedback\models.py:12
+msgid "In processing"
+msgstr "В процессе"
+
+#: .\server\apps\feedback\models.py:13
+msgid "The answer is given"
+msgstr "Ответ дан"
+
+#: .\server\apps\feedback\models.py:21
+msgid "text"
+msgstr "текст"
+
+#: .\server\apps\feedback\models.py:27
+msgid "email"
+msgstr "почта"
+
+#: .\server\apps\feedback\models.py:33
+msgid "status"
+msgstr "статус"
+
+#: .\server\apps\feedback\views.py:44
+msgid "form_success"
+msgstr "Отправка формы выполнена успешно"
+
+#: .\server\settings\components\common.py:131
 msgid "English"
 msgstr "Анлгийский"
 
-#: .\server\settings\components\common.py:120
+#: .\server\settings\components\common.py:132
 msgid "Russian"
 msgstr "Русский"
 
+#: .\server\templates\404.html:8
+msgid "opps"
+msgstr "Уппс!"
+
+#: .\server\templates\404.html:8
+msgid "not_found_header"
+msgstr "Страница не найдена."
+
+#: .\server\templates\404.html:10
+msgid "not_found_text"
+msgstr "Страница, которую вы ищете, не существует."
+
 #: .\server\templates\about\index.html:8
-msgid ""
-"The project is a marketplace, it sells different goods, from books to food."
+msgid "project_about"
 msgstr ""
 "Проект представляет собой маркетплейс, в нем продаются разные товары, от "
 "книг до продуктов питания."
 
-#: .\server\templates\catalog\products.html:14
-msgid "ID"
-msgstr "ID"
-
-#: .\server\templates\catalog\products.html:15
+#: .\server\templates\catalog\products.html:19
+#: .\server\templates\table_products.html:15
 msgid "Name"
 msgstr "Название"
 
-#: .\server\templates\catalog\products.html:16
-#, fuzzy
-#| msgid "description"
+#: .\server\templates\catalog\products.html:20
+#: .\server\templates\table_products.html:17
 msgid "Description"
-msgstr "описание"
+msgstr "Описание"
+
+#: .\server\templates\catalog\products.html:45
+#: .\server\templates\table_products.html:44
+msgid "Detail"
+msgstr "Подробнее"
+
+#: .\server\templates\nav.html:39
+msgid "Feedback"
+msgstr "Обратная связь"
+
+#: .\server\templates\nav.html:44
+msgid "Admin panel"
+msgstr "Панель администратора"
+
+#~ msgid ""
+#~ "The project is a marketplace, it sells different goods, from books to "
+#~ "food."
+#~ msgstr ""
+#~ "Проект представляет собой маркетплейс, в нем продаются разные товары, от "
+#~ "книг до продуктов питания."
+
+#~ msgid "ID"
+#~ msgstr "ID"

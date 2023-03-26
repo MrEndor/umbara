@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block nav %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light aligns-items-center justify-content-center">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -12,14 +12,57 @@
         <div class="nav-link" style="font-weight: bold;">Umbara Project</div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'homepage:home' %}">{% trans "Home" %}</a>
+        {% url 'homepage:home' as about_url %}
+        <a href="{{ about_url }}"
+          class="nav-link {% if request.path == about_url %}{{ 'active' }}{% endif %}">
+          {% trans "Home" %}
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'about:description' %}">{% trans "About project" %}</a>
+        {% url 'about:description' as about_url %}
+        <a href="{{ about_url }}"
+          class="nav-link {% if request.path == about_url %}{{ 'active' }}{% endif %}">
+          {% trans "About project" %}
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'catalog:item_list' %}">{% trans "List of products" %}</a>
+        {% url 'catalog:item_list' as item_list_url %}
+        <a href="{{ item_list_url }}"
+          class="nav-link {% if request.path == item_list_url %}{{ 'active' }}{% endif %}">
+          {% trans "List of products" %}
+        </a>
       </li>
+      <li class="nav-item">
+        {% url 'feedback:feedback' as feedback_url %}
+        <a href="{{ feedback_url }}"
+          class="nav-link {% if request.path == feedback_url %}{{ 'active' }}{% endif %}">
+          {% trans "Feedback" %}
+        </a>
+      </li>
+      {% if request.user.is_superuser  %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin panel" %}</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse me-auto" id="navbarNav">
+    <ul class="navbar-nav justify-content-between">
+      {% if not request.user.is_authenticated %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:login' %}">{% trans "Log in" %}</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:signup' %}">{% trans "Sign up" %}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:profile' %}">{{ request.user.username }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:logout' %}">{% trans "Log out" %}</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>

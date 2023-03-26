@@ -25,3 +25,28 @@ def catalog_tag_normalized_different_names() -> List[Tuple[str, str]]:
         ('hello world!', 'dlrowolleh'),
         ('kak tak', 'как не так'),
     ]
+
+
+@pytest.fixture(autouse=True, scope='class')
+def item_list_not_deferred_fields():
+    """Fixture for deferred item list fields."""
+    return {
+        'catalog',
+        'name',
+        'image',
+        'tags',
+        'text',
+    }
+
+
+@pytest.fixture(autouse=True)
+def item_detail_not_deferred_fields():
+    """Fixture for deferred item detail fields."""
+    return {
+        'catalog',
+        'name',
+        'image',
+        'gallery',
+        'tags',
+        'text',
+    }

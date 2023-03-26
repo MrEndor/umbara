@@ -27,8 +27,8 @@ class TestItemModel(django.TestCase):
         assert instance.category
         assert len(instance.name) <= 150
         assert isinstance(instance.is_published, bool)
-        assert instance.images
-        assert len(str(instance.images[0]))
+        assert instance.gallery.exists()
+        assert len(str(instance.gallery.all()[0]))
         assert len(str(instance))
 
     @given(

@@ -1,14 +1,13 @@
-from functools import cached_property
-
 from django.db import models
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 from server.apps.catalog import constants
+from server.apps.catalog.logic.queries.item import CatalogItemManager
 from server.apps.catalog.models.category import CatalogCategory
 from server.apps.catalog.models.tag import CatalogTag
 from server.apps.core.models import BaseModel, ImageMixin
-from server.apps.core.validators import is_contains
+from server.apps.core.validators import ContainsValidator
 
 _HELP_TEXT = _(
     'The description should be more than 2x words and ' +
@@ -35,7 +34,8 @@ class ImageItem(ImageMixin, models.Model):
         return str(self.image)
 
 
-class CatalogItem(
+# false positive
+class CatalogItem(  # type: ignore[misc]
     ImageMixin,
     BaseModel,
 ):
@@ -43,7 +43,9 @@ class CatalogItem(
 
     text = models.TextField(
         validators=[
-            is_contains(*constants.CATALOG_ITEM_KEYWORDS),
+            ContainsValidator(
+                *constants.CATALOG_ITEM_KEYWORDS,
+            ),  # type: ignore[no-untyped-call]
         ],
         verbose_name=_('description'),
         help_text=format_lazy(
@@ -61,11 +63,22 @@ class CatalogItem(
         null=True,
         verbose_name=_('categories'),
     )
+    is_on_main = models.BooleanField(
+        default=False,
+        verbose_name=_('is on main'),
+    )
+    gallery = models.ManyToManyField(
+        ImageItem,
+        verbose_name=_('gallery'),
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
 
-    @cached_property
-    def images(self):
-        """Property for all product pictures."""
-        return ImageItem.objects.filter(product=self.id).all()
+    objects = CatalogItemManager()
 
     class Meta:
         db_table = 'catalog_item'

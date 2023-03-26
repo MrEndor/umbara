@@ -1,0 +1,16 @@
+{% load i18n %}
+
+{% autoescape off %}
+{% blocktranslate %}You received this email because your account has been blocked due to multiple login attempts.{% endblocktranslate %}
+
+{% translate "Please go to the following page to unlock your account:" %}
+{% block reset_link %}
+{{ protocol }}://{{ domain }}{% url 'users:unlock' token=token %}
+{% endblock %}
+{% translate 'Your username, in case you’ve forgotten:' %} {{ user.get_username }}
+
+{% translate "Thanks for using our site!" %}
+
+{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+
+{% endautoescape %}

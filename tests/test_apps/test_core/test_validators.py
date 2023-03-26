@@ -2,7 +2,7 @@ import pytest
 from django.core.exceptions import ValidationError
 from hypothesis import given, strategies
 
-from server.apps.core.validators import is_contains
+from server.apps.core.validators import ContainsValidator
 
 
 @given(
@@ -10,13 +10,15 @@ from server.apps.core.validators import is_contains
 )
 def test_not_contain(text: str):
     """This test verifies that there are no words in the line."""
-    func = is_contains('not contain')
+    validator = ContainsValidator(
+        'not contain',
+    )  # type: ignore[no-untyped-call]
 
     with pytest.raises(
         ValidationError,
         match='Текст должен содержать одно из слов',
     ):
-        func(text)
+        validator(text)
 
 
 @given(
@@ -25,9 +27,9 @@ def test_not_contain(text: str):
 )
 def test_is_contain(text: str, word: str):
     """This test verifies that the word is in the string."""
-    func = is_contains(word)
+    validator = ContainsValidator(word)  # type: ignore[no-untyped-call]
 
-    func(' '.join([text, word]))
+    validator(' '.join([text, word]))
 
 
 def test_empty_words_is_contain():
@@ -36,4 +38,4 @@ def test_empty_words_is_contain():
         ValueError,
         match='Words must not be empty',
     ):
-        is_contains()
+        ContainsValidator()  # type: ignore[no-untyped-call]

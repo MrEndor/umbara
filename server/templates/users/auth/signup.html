@@ -1,0 +1,12 @@
+{% extends 'users/auth/base_auth.html' %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block form_action %}
+  action="{% url 'users:create_signup' %}"
+{% endblock %}
+
+{% block button_text %}
+  {% translate 'Sign up' %}
+{% endblock %}

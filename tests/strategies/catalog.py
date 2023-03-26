@@ -1,3 +1,4 @@
+from base64 import b64decode
 from random import choice, randrange
 from typing import List
 
@@ -12,6 +13,14 @@ from server.apps.catalog.models import (
     CatalogTag,
     ImageItem,
 )
+
+EMPTY_PIXEL = b64decode((
+    'iVBORw0KGgoAAAANSUhEU' +
+    'gAAAAEAAAABCAAAAAA6fp' +
+    'tVAAAACklEQVQYV2P4DwA' +
+    'BAQEAWk1v8QAAAABJRU5Er' +
+    'kJggg=='
+))
 
 
 @strategies.composite
@@ -39,11 +48,12 @@ def include_tags(
 
 def include_images(
     product: CatalogItem,
+    image_content: bytes,
 ):
     """Function to add images."""
     image = SimpleUploadedFile(
         'cat.jpg',
-        b'0' * 1024,
+        content=image_content,
         content_type='image/jpeg',
     )
     image.product = product  # type: ignore[attr-defined]
@@ -55,6 +65,8 @@ def include_images(
         product=product,
     )
     image_item.save()
+    product.gallery.add(image_item)
+    product.save()
 
     return product
 
@@ -82,6 +94,13 @@ base_tags_strategy = strategies.lists(
             min_value=1,
             max_value=(2 ** 63) - 1,
         ),
+        name=strategies.text(
+            alphabet=strategies.from_regex(
+                '^[а-яА-Яa-zA-Z]$', fullmatch=True,
+            ),
+            min_size=10,
+            max_size=150,
+        ),
     ),
     min_size=1,
     unique=True,
@@ -97,6 +116,20 @@ base_category_strategy = django.from_model(
     id=strategies.integers(
         min_value=1,
         max_value=(2 ** 63) - 1,
+    ),
+    name=strategies.text(
+        alphabet=strategies.from_regex(
+            '^[а-яА-Яa-zA-Z]$', fullmatch=True,
+        ),
+        min_size=100,
+        max_size=150,
+    ),
+    slug=strategies.text(
+        alphabet=strategies.from_regex(
+            '^[0-9-_a-zA-Z]$', fullmatch=True,
+        ),
+        min_size=100,
+        max_size=200,
     ),
 )
 

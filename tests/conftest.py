@@ -5,7 +5,6 @@ It may be also used for extending doctest's context:
 1. https://docs.python.org/3/library/doctest.html
 2. https://docs.pytest.org/en/latest/doctest.html
 """
-
 import hypothesis
 import pytest
 
@@ -22,14 +21,10 @@ hypothesis.settings.register_profile(
             hypothesis.HealthCheck.filter_too_much,
         ],
         max_examples=500,
+        deadline=1500,
+        stateful_step_count=150,
     ),
 )
-
-
-@pytest.fixture(autouse=True)
-def _media_root(settings, tmpdir_factory) -> None:
-    """Forces django to save media files into temp folder."""
-    settings.MEDIA_ROOT = tmpdir_factory.mktemp('media', numbered=True)
 
 
 @pytest.fixture(autouse=True)
@@ -44,7 +39,7 @@ def _password_hashers(settings) -> None:
 def _auth_backends(settings) -> None:
     """Deactivates security backend from Axes app."""
     settings.AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
+        'server.apps.users.backend.UserAuthBackend',
     )
 
 
@@ -52,5 +47,12 @@ def _auth_backends(settings) -> None:
 def _debug(settings) -> None:
     """Sets proper DEBUG and TEMPLATE debug mode for coverage."""
     settings.DEBUG = False
+    settings.INITIAL_ACTIVATION = True
     for template in settings.TEMPLATES:
         template['OPTIONS']['debug'] = True
+
+
+@pytest.fixture(autouse=True)
+def _email_backend(settings):
+    """Forces django to use locmem email backend."""
+    settings.EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'

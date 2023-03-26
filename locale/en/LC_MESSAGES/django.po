@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-13 17:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:116
+#: .\server\templates\nav.html:18
+msgid "Home"
+msgstr "Home"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:119
+#: .\server\templates\nav.html:25
+msgid "About project"
+msgstr "About project"
+
+#: .\htmlcov\d_4abd08ec5ed44bb1_base_html.html:122
+#: .\server\templates\nav.html:32
+msgid "List of products"
+msgstr "List of products"
+
+#: .\server\apps\catalog\models\category.py:10
+#, python-brace-format
+msgid "Weight must be greater than {minimum} and less than {maximum}"
+msgstr "Weight must be greater than {minimum} and less than {maximum}"
+
+#: .\server\apps\catalog\models\category.py:26
+msgid "weight"
+msgstr "weight"
+
+#: .\server\apps\catalog\models\category.py:36
+#: .\server\templates\table_products.html:16
+msgid "Category"
+msgstr "Category"
+
+#: .\server\apps\catalog\models\category.py:37
+msgid "Categories"
+msgstr "Categories"
+
+#: .\server\apps\catalog\models\item.py:13
+#, python-brace-format
+msgid ""
+"The description should be more than 2x words and contain the words "
+"\"{words}\""
+msgstr ""
+"The description should be more than 2x words and contain the words "
+"\"{words}\""
+
+#: .\server\apps\catalog\models\item.py:29
+#: .\server\templates\catalog\products.html:22
+#: .\server\templates\table_products.html:19
+msgid "Image"
+msgstr "Image"
+
+#: .\server\apps\catalog\models\item.py:30
+msgid "Images"
+msgstr "Images"
+
+#: .\server\apps\catalog\models\item.py:48
+msgid "description"
+msgstr "description"
+
+#: .\server\apps\catalog\models\item.py:56
+msgid "tags"
+msgstr "tags"
+
+#: .\server\apps\catalog\models\item.py:62
+msgid "categories"
+msgstr "categories"
+
+#: .\server\apps\catalog\models\item.py:66
+msgid "is on main"
+msgstr "is on main"
+
+#: .\server\apps\catalog\models\item.py:70
+msgid "gallery"
+msgstr "gallery"
+
+#: .\server\apps\catalog\models\item.py:83
+msgid "Product"
+msgstr "Product"
+
+#: .\server\apps\catalog\models\item.py:84
+msgid "Products"
+msgstr "Products"
+
+#: .\server\apps\catalog\models\tag.py:13
+msgid "Tag"
+msgstr "Tag"
+
+#: .\server\apps\catalog\models\tag.py:14
+#: .\server\templates\catalog\products.html:21
+#: .\server\templates\table_products.html:18
+msgid "Tags"
+msgstr "Tags"
+
+#: .\server\apps\catalog\views.py:59
+#, fuzzy
+#| msgid "Products"
+msgid "New Products"
+msgstr "New Products"
+
+#: .\server\apps\catalog\views.py:75
+#, fuzzy
+#| msgid "Products"
+msgid "Friday Products"
+msgstr "Friday Products"
+
+#: .\server\apps\catalog\views.py:94
+#, fuzzy
+#| msgid "Products"
+msgid "Old Products"
+msgstr "Old Products"
+
+#: .\server\apps\core\models\base.py:16
+msgid "name"
+msgstr "name"
+
+#: .\server\apps\core\models\base.py:18
+#, python-brace-format
+msgid "Maximum length {maximum}"
+msgstr "Maximum length {maximum}"
+
+#: .\server\apps\core\models\base.py:24
+msgid "published"
+msgstr "published"
+
+#: .\server\apps\core\models\base.py:60
+msgid "normalized name"
+msgstr "normalized name"
+
+#: .\server\apps\core\models\base.py:75
+msgid "Name is already exists"
+msgstr "Name is already exists"
+
+#: .\server\apps\core\models\sorl.py:23
+msgid "image"
+msgstr "image"
+
+#: .\server\apps\feedback\forms.py:22
+msgid "Submit"
+msgstr ""
+
+#: .\server\apps\feedback\forms.py:27 .\server\apps\feedback\models.py:19
+msgid "feedback form"
+msgstr ""
+
+#: .\server\apps\feedback\forms.py:28 .\server\apps\feedback\models.py:20
+msgid "feedbacks forms"
+msgstr ""
+
+#: .\server\apps\feedback\models.py:9
+msgid "text"
+msgstr ""
+
+#: .\server\apps\feedback\models.py:15
+msgid "email"
+msgstr ""
+
+#: .\server\apps\feedback\views.py:40
+msgid "form_success"
+msgstr "Form submission successful"
+
+#: .\server\settings\components\common.py:131
+msgid "English"
+msgstr "English"
+
+#: .\server\settings\components\common.py:132
+msgid "Russian"
+msgstr "Russian"
+
+#: .\server\templates\404.html:8
+msgid "opps"
+msgstr "Opps!"
+
+#: .\server\templates\404.html:8
+msgid "not_found_header"
+msgstr "Page not found."
+
+#: .\server\templates\404.html:10
+msgid "not_found_text"
+msgstr "The page you’re looking for doesn’t exist."
+
+#: .\server\templates\about\index.html:8
+msgid "project_about"
+msgstr ""
+"The project is a marketplace, it sells different goods, from books to food."
+
+#: .\server\templates\catalog\products.html:19
+#: .\server\templates\table_products.html:15
+msgid "Name"
+msgstr "Name"
+
+#: .\server\templates\catalog\products.html:20
+#: .\server\templates\table_products.html:17
+msgid "Description"
+msgstr "Description"
+
+#: .\server\templates\catalog\products.html:45
+#: .\server\templates\table_products.html:44
+msgid "Detail"
+msgstr "Detail"
+
+#: .\server\templates\nav.html:39
+msgid "Feedback"
+msgstr "Feedback"
+
+#: .\server\templates\nav.html:44
+msgid "Admin panel"
+msgstr "Admin panel"

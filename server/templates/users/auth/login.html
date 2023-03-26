@@ -1,0 +1,17 @@
+{% extends 'users/auth/base_auth.html' %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block form_links %}
+  {% url 'users:password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{% block button_text %}
+  {% translate 'Log in' %}
+{% endblock %}
