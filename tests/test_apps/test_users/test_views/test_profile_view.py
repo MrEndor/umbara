@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 import pytest
+from django.contrib.auth import models as auth_models
 from django.test import Client
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -15,7 +16,7 @@ from server.apps.users import forms, models
     profile=django.from_model(
         models.Profile,
         user=django.from_model(
-            models.User,
+            auth_models.User,
             is_active=strategies.just(True),
         ),
     ),
@@ -63,6 +64,7 @@ def test_profile_page(  # noqa: WPS218
             min_size=10,
             max_size=150,
         ),
+        email=strategies.emails(),
     ),
 )
 @settings(max_examples=10)
@@ -77,7 +79,7 @@ def test_profile_change_page(
     user = user_form.save()
 
     profile = profile_form.instance
-    profile.user = user  # type: ignore[assignment]
+    profile.user = user
     profile.save()
 
     client.force_login(user)
@@ -100,7 +102,7 @@ def test_profile_change_page(
     profile=django.from_model(
         models.Profile,
         user=django.from_model(
-            models.User,
+            models.UserWithProfile,
             is_active=strategies.just(True),
         ),
     ),

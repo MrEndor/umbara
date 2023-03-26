@@ -2,23 +2,23 @@ from http import HTTPStatus
 from typing import cast
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
-from server.apps.users import forms
+from server.apps.users import forms, models
 
 
 @login_required
 @require_http_methods(request_method_list=['GET'])
 def profile(request: HttpRequest) -> HttpResponse:
     """View for the profile."""
+    user = cast(models.UserWithProfile, request.user)
     user_form = forms.UserForm(
-        instance=cast(User, request.user),
+        instance=user,
     )
     profile_form = forms.ProfileForm(
-        instance=cast(User, request.user).profile,
+        instance=user.profile,
     )
 
     return render(
@@ -35,14 +35,15 @@ def profile(request: HttpRequest) -> HttpResponse:
 @require_http_methods(request_method_list=['POST'])
 def change_profile(request: HttpRequest) -> HttpResponse:
     """View for the change profile."""
+    user = cast(models.UserWithProfile, request.user)
     user_form = forms.UserForm(
         request.POST or None,
-        instance=cast(User, request.user),
+        instance=user,
     )
     profile_form = forms.ProfileForm(
         request.POST or None,
         request.FILES or None,
-        instance=cast(User, request.user).profile,
+        instance=user.profile,
     )
 
     request_forms = (
@@ -62,7 +63,6 @@ def change_profile(request: HttpRequest) -> HttpResponse:
         )
 
     user_form.save()
-    profile_form.save()
 
     return render(
         request,

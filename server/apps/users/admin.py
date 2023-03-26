@@ -16,7 +16,7 @@ class ProfileUserInline(
     can_delete = False
 
 
-@admin.register(admin_models.User)
+@admin.register(models.UserWithProfile)
 class UserAdmin(AuthUserAdmin):
     """User admin."""
 

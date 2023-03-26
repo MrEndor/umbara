@@ -2,7 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.views.generic import TemplateView
 
-from server.apps.users import views
+from server.apps.users import forms, views
 
 app_name = 'users'
 
@@ -11,6 +11,7 @@ auth_urlpatterns = [
         'auth/login/',
         auth_views.LoginView.as_view(
             template_name='users/auth/login.html',
+            form_class=forms.LoginForm,
         ),
         name='login',
     ),
@@ -49,6 +50,11 @@ auth_urlpatterns = [
         'auth/activate/<token>/',
         views.activate_user,
         name='activate',
+    ),
+    path(
+        'auth/unlock/<token>',
+        views.unlock,
+        name='unlock',
     ),
     path(
         'auth/password_change/done/',

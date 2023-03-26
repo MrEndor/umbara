@@ -1,3 +1,4 @@
+from server.apps.users.views.axes import unlock
 from server.apps.users.views.detail import user_detail
 from server.apps.users.views.list import user_list
 from server.apps.users.views.profile import change_profile, profile
@@ -11,4 +12,5 @@ __all__ = (
     'user_list',
     'signup',
     'profile',
+    'unlock',
 )
