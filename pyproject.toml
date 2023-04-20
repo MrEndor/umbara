@@ -51,7 +51,7 @@ django-coverage-plugin = "^2.0"
 pytest-randomly = "^3.12"
 pytest-timeout = "^2.1"
 django-test-migrations = "^1.2"
-hypothesis = "^6.54"
+hypothesis = "^6.72"
 mock = "^5.0.1"
 freezegun = "^1.2.2"
 
