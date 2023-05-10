@@ -9,7 +9,7 @@ authors = ["umbaraapp.com"]
 [tool.poetry.dependencies]
 python = "^3.11.1"
 
-django = { version = "^3.2.17", extras = ["argon2"] }
+django = { version = "^4.2.1", extras = ["argon2"] }
 django-split-settings = "^1.2"
 django-axes = "^5.40"
 django-csp = "^3.7"
