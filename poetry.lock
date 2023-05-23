@@ -2618,22 +2618,24 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 
 [[package]]
 name = "yamllint"
-version = "1.29.0"
+version = "1.32.0"
 description = "A linter for YAML files."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "yamllint-1.29.0-py3-none-any.whl", hash = "sha256:5153bf9f8205aa9dc6af6217e38bd4f5baf09d9a7c6f4ae1e23f90d9c00c49c5"},
-    {file = "yamllint-1.29.0.tar.gz", hash = "sha256:66a755d5fbcbb8831f1a9568676329b5bac82c37995bcc9afd048b6459f9fa48"},
+    {file = "yamllint-1.32.0-py3-none-any.whl", hash = "sha256:d97a66e48da820829d96077d76b8dfbe6c6140f106e558dae87e81ac4e6b30b7"},
+    {file = "yamllint-1.32.0.tar.gz", hash = "sha256:d01dde008c65de5b235188ab3110bebc59d18e5c65fc8a58267cd211cd9df34a"},
 ]
 
 [package.dependencies]
 pathspec = ">=0.5.3"
 pyyaml = "*"
-setuptools = "*"
+
+[package.extras]
+dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11.1"
-content-hash = "b25985a9e4595c7d150d5b6f0ceb53471dad58d9ef337d782edd1e16d3b37aeb"
+python-versions = "~3.11"
+content-hash = "3bac33b15e15da8fafd906177f7bcb756abdf4779db90c1957833a3c0556c5b7"
