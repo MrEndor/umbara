@@ -41,7 +41,7 @@ nplusone = "^1.0"
 wemake-python-styleguide = "^0.17"
 flake8-pytest-style = "^1.6"
 flake8-django = "^1.1"
-flake8-logging-format = "^0.7"
+flake8-logging-format = "^2024.24"
 nitpick = "^0.32"
 
 pytest = "^7.1"
