@@ -58,7 +58,7 @@ freezegun = "^1.2.2"
 mypy = "^1.0.1"
 django-stubs = { version = "^1.15", extras = ["compatible-mypy"] }
 
-yamllint = "^1.27"
+yamllint = "^1.35"
 safety = "^2.1"
 dotenv-linter = "^0.4"
 polint = "^0.4"
